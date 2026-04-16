@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arcatype – Investor One-Pager 2026</title>
+<style>
+@font-face {
+  font-family: 'ABC Oracle';
+  src: url('fonts/ABCOracleVariable-Trial.ttf') format('truetype');
+  font-weight: 200 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'ABC Oracle';
+  src: url('fonts/ABCOracleVariable-Trial.ttf') format('truetype');
+  font-weight: 200 700;
+  font-style: italic;
+  font-variation-settings: 'slnt' -13;
+}
+
+:root {
+  --bg: #F5F3EF;
+  --bg-card: #FAFAF8;
+  --bg-dark: #1A1917;
+  --text: #1A1917;
+  --text-mid: #6B6960;
+  --text-light: #A8A59E;
+  --border: rgba(26,25,23,0.1);
+  --border-mid: rgba(26,25,23,0.18);
+  --green: #1D9E75;
+  --purple: #534AB7;
+  --amber: #BA7517;
+  --coral: #993C1D;
+  --serif: 'ABC Oracle', Georgia, serif;
+  --sans: 'ABC Oracle', system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.page {
+  width: 210mm;
+  min-height: 297mm;
+  margin: 0 auto;
+}
+
+/* — PASSWORD GATE — */
+#gate {
+  position: fixed; inset: 0; z-index: 9999;
+  background: var(--bg-dark);
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 24px;
+}
+#gate.hidden { display: none; }
+.gate-logo {
+  font-family: var(--serif);
+  font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--text-light);
+}
+.gate-label {
+  font-size: 10px; color: rgba(245,243,239,.5);
+  letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: -12px;
+}
+.gate-input-row {
+  display: flex; border: 0.5px solid rgba(245,243,239,.15);
+}
+#gate-input {
+  background: transparent; border: none; outline: none;
+  color: #F5F3EF; font-family: var(--sans); font-size: 13px; font-weight: 300;
+  padding: 10px 16px; width: 200px; letter-spacing: 0.05em;
+}
+#gate-input::placeholder { color: rgba(245,243,239,.2); }
+#gate-btn {
+  background: transparent; border: none;
+  border-left: 0.5px solid rgba(245,243,239,.15);
+  color: rgba(245,243,239,.5);
+  font-family: var(--sans); font-size: 10px;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 10px 16px; cursor: pointer; transition: color 0.2s;
+}
+#gate-btn:hover { color: rgba(245,243,239,.75); }
+#gate-error { font-size: 11px; color: #c0624a; letter-spacing: 0.05em; height: 14px; margin-top: -12px; }
+
+/* — HEADER — */
+.header {
+  background: var(--bg-dark);
+  padding: 2.5rem 2.5rem 2rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.wordmark {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: rgba(245,243,239,.55);
+}
+
+.header-pills {
+  display: flex;
+  gap: 6px;
+}
+
+.pill {
+  font-size: 10px;
+  padding: 3px 10px;
+  border: 0.5px solid rgba(245,243,239,.3);
+  border-radius: 20px;
+  color: rgba(245,243,239,.6);
+}
+
+.header-headline {
+  font-family: var(--serif);
+  font-size: 2.8rem;
+  font-weight: 300;
+  line-height: 1.05;
+  color: #F5F3EF;
+  max-width: 520px;
+}
+
+.header-headline em {
+  font-style: italic;
+  color: rgba(245,243,239,.55);
+}
+
+.header-sub {
+  font-size: 12px;
+  color: rgba(245,243,239,.6);
+  font-weight: 300;
+  max-width: 520px;
+  line-height: 1.75;
+}
+
+.header-bottom {
+  display: flex;
+  gap: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 0.5px solid rgba(245,243,239,.12);
+  flex-wrap: wrap;
+}
+
+.header-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.header-stat-val {
+  font-family: var(--serif);
+  font-size: 1.6rem;
+  font-weight: 300;
+  color: #F5F3EF;
+  line-height: 1;
+}
+
+.header-stat-label {
+  font-size: 10px;
+  color: rgba(245,243,239,.5);
+  letter-spacing: .04em;
+}
+
+.header-divider {
+  width: 0.5px;
+  background: rgba(245,243,239,.15);
+  align-self: stretch;
+}
+
+.header-contact {
+  font-size: 10px;
+  color: rgba(245,243,239,.5);
+  letter-spacing: .04em;
+  padding-top: .5rem;
+}
+.header-contact a {
+  color: rgba(245,243,239,.5);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.header-contact a:hover { color: rgba(245,243,239,.7); }
+.header-contact span { margin: 0 6px; }
+
+/* — BODY — */
+.body {
+  padding: 1.75rem 2.5rem 1.75rem 2.5rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 1.25rem;
+  align-items: start;
+}
+
+/* — SECTION LABEL — */
+.section-label {
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-bottom: .625rem;
+}
+
+/* — CARD — */
+.card {
+  background: var(--bg-card);
+  border: 0.5px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem 1.125rem;
+}
+
+.card-title {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: .375rem;
+}
+
+.card-body {
+  font-size: 11px;
+  color: var(--text-mid);
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+/* — PROBLEM — */
+.problem-section {
+  grid-column: 1 / -1;
+}
+
+.problem-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 0.5px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: .5rem;
+}
+
+.prob-card {
+  background: var(--bg-card);
+  padding: 1rem;
+}
+
+.prob-num {
+  font-family: var(--serif);
+  font-size: 1.6rem;
+  font-weight: 300;
+  color: var(--border-mid);
+  line-height: 1;
+  margin-bottom: .375rem;
+}
+
+.prob-title {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: .25rem;
+}
+
+.prob-body {
+  font-size: 10.5px;
+  color: var(--text-mid);
+  line-height: 1.65;
+  font-weight: 300;
+}
+
+/* — LEFT COLUMN — */
+.left-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* — RIGHT COLUMN — */
+.right-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* — SOLUTION STACK — */
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--border);
+  border: 0.5px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.stack-row {
+  background: var(--bg-card);
+  padding: .75rem 1rem;
+}
+
+.stack-row-label {
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-bottom: .25rem;
+}
+
+.stack-row-title {
+  font-size: 11.5px;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: .2rem;
+}
+
+.stack-row-body {
+  font-size: 10.5px;
+  color: var(--text-mid);
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+/* — BUSINESS MODEL — */
+.tier-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 0.5px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.tier-cell {
+  background: var(--bg-card);
+  padding: .875rem .875rem .75rem;
+}
+
+.tier-cell.dark {
+  background: var(--bg-dark);
+}
+
+.tier-name {
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-bottom: .5rem;
+}
+
+.tier-cell.dark .tier-name {
+  color: rgba(245,243,239,.5);
+}
+
+.tier-price {
+  font-family: var(--serif);
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: var(--text);
+  line-height: 1;
+  margin-bottom: .125rem;
+}
+
+.tier-cell.dark .tier-price {
+  color: #F5F3EF;
+}
+
+.tier-per {
+  font-size: 9px;
+  color: var(--text-light);
+  margin-bottom: .625rem;
+}
+
+.tier-cell.dark .tier-per {
+  color: rgba(245,243,239,.5);
+}
+
+.tier-feats {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.tier-feat {
+  font-size: 10px;
+  color: var(--text-mid);
+  display: flex;
+  gap: 5px;
+  font-weight: 300;
+  line-height: 1.4;
+}
+
+.tier-cell.dark .tier-feat {
+  color: rgba(245,243,239,.6);
+}
+
+.feat-dash {
+  color: var(--text-light);
+  flex-shrink: 0;
+}
+
+.tier-cell.dark .feat-dash {
+  color: rgba(245,243,239,.35);
+}
+
+/* — COMPETITIVE TABLE — */
+.comp-section {
+  grid-column: 1 / -1;
+}
+
+.comp-table-wrap {
+  background: var(--border);
+  border: 0.5px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: .5rem;
+}
+
+.comp-table-wrap table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 10.5px;
+}
+
+.comp-table-wrap th {
+  background: var(--bg-card);
+  text-align: center;
+  font-weight: 500;
+  font-size: 9px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  padding: .625rem .5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.comp-table-wrap th:first-child {
+  text-align: left;
+  padding-left: 1rem;
+}
+
+.comp-table-wrap td {
+  background: var(--bg-card);
+  text-align: center;
+  padding: .5rem .5rem;
+  color: var(--text-mid);
+  font-weight: 300;
+  border-bottom: 1px solid var(--border);
+}
+
+.comp-table-wrap td:first-child {
+  text-align: left;
+  padding-left: 1rem;
+  color: var(--text);
+  font-weight: 400;
+}
+
+.comp-table-wrap tr:last-child td {
+  border-bottom: none;
+}
+
+.comp-table-wrap tr.arcatype-row td {
+  background: var(--bg-dark);
+  color: rgba(245,243,239,.7);
+  font-weight: 500;
+}
+
+.comp-table-wrap tr.arcatype-row td:first-child {
+  color: #F5F3EF;
+}
+
+.comp-check { color: var(--text); font-weight: 500; }
+.comp-dash { color: var(--text-light); }
+.comp-table-wrap tr.arcatype-row .comp-check { color: #F5F3EF; }
+.comp-table-wrap tr.arcatype-row .comp-dash { color: rgba(245,243,239,.4); }
+
+/* — TRACTION — */
+.traction-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 0.5px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: .5rem;
+}
+
+.traction-cell {
+  background: var(--bg-card);
+  padding: .75rem .875rem;
+}
+
+.traction-date {
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-bottom: .25rem;
+}
+
+.traction-title {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: .15rem;
+}
+
+.traction-sub {
+  font-size: 10px;
+  color: var(--text-mid);
+  line-height: 1.5;
+  font-weight: 300;
+}
+
+/* — TWO SIDE — */
+.two-side {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+/* — ASK CARD DARK — */
+.ask-card {
+  background: var(--bg-dark);
+  border-radius: 8px;
+  padding: 1.25rem;
+}
+
+.ask-label {
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: rgba(245,243,239,.5);
+  margin-bottom: .5rem;
+}
+
+.ask-headline {
+  font-family: var(--serif);
+  font-size: 1.8rem;
+  font-weight: 300;
+  color: #F5F3EF;
+  line-height: 1.1;
+  margin-bottom: .625rem;
+}
+
+.ask-headline em {
+  font-style: italic;
+  color: rgba(245,243,239,.55);
+}
+
+.ask-narrative {
+  font-size: 10.5px;
+  color: rgba(245,243,239,.6);
+  line-height: 1.65;
+  font-weight: 300;
+  margin-bottom: .75rem;
+}
+.ask-narrative strong {
+  color: rgba(245,243,239,.8);
+  font-weight: 500;
+}
+
+.ask-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .75rem;
+}
+
+.ask-col-title {
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: rgba(245,243,239,.5);
+  margin-bottom: .375rem;
+}
+
+.ask-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.ask-list li {
+  font-size: 10px;
+  color: rgba(245,243,239,.6);
+  font-weight: 300;
+  line-height: 1.45;
+  display: flex;
+  gap: 6px;
+  align-items: baseline;
+}
+
+.ask-list li::before {
+  content: '–';
+  color: rgba(245,243,239,.35);
+  font-size: 9px;
+  flex-shrink: 0;
+}
+
+/* — MOAT — */
+.moat-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--border);
+  border: 0.5px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.moat-row {
+  background: var(--bg-card);
+  padding: .625rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: .75rem;
+}
+
+.moat-name {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.moat-type {
+  font-size: 9px;
+  color: var(--text-light);
+  margin-top: 1px;
+}
+
+.moat-tag {
+  font-size: 9px;
+  font-weight: 500;
+  padding: 2px 7px;
+  border-radius: 20px;
+  flex-shrink: 0;
+}
+
+.tag-hard { background: #FAECE7; color: #712B13; }
+.tag-grow { background: #E1F5EE; color: #085041; }
+
+/* — TEAM — */
+.team-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--border);
+  border: 0.5px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.team-cell {
+  background: var(--bg-card);
+  padding: .875rem 1rem;
+}
+
+.team-av {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background: var(--bg-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  font-weight: 500;
+  color: #F5F3EF;
+  letter-spacing: .04em;
+  margin-bottom: .5rem;
+  flex-shrink: 0;
+}
+
+.team-name {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 1px;
+}
+
+.team-role {
+  font-size: 9px;
+  color: var(--text-light);
+  margin-bottom: .375rem;
+}
+
+.team-bio {
+  font-size: 10px;
+  color: var(--text-mid);
+  line-height: 1.55;
+  font-weight: 300;
+}
+
+/* — FINANCIALS — */
+.stat-inline {
+  display: flex;
+  gap: 1px;
+  background: var(--border);
+  border: 0.5px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.stat-cell {
+  background: var(--bg-card);
+  padding: .75rem 1rem;
+  flex: 1;
+}
+
+.stat-val {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: var(--text);
+  line-height: 1;
+  margin-bottom: .15rem;
+}
+
+.stat-label {
+  font-size: 9.5px;
+  color: var(--text-light);
+  font-weight: 300;
+}
+
+/* — FOOTER — */
+.footer {
+  padding: 1rem 2.5rem;
+  border-top: 0.5px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-left {
+  font-size: 10px;
+  color: var(--text-light);
+}
+
+.footer-contacts {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.footer-contact {
+  font-size: 10px;
+  color: var(--text-light);
+}
+
+.footer-right {
+  font-size: 10px;
+  color: var(--text-light);
+  letter-spacing: .04em;
+}
+
+@media print {
+  .page { width: 210mm; margin: 0; }
+  .header { break-inside: avoid; }
+  #gate { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- — PASSWORD GATE — -->
+<div id="gate">
+  <div class="gate-logo"><img src="arcatype-logo-V1.svg" alt="Arcatype" style="height:14px;filter:brightness(0) invert(1);opacity:.4;"></div>
+  <div class="gate-label">Enter access code</div>
+  <div class="gate-input-row">
+    <input id="gate-input" type="password" placeholder="password" autocomplete="off">
+    <button id="gate-btn" onclick="checkPassword()">Enter</button>
+  </div>
+  <div id="gate-error"></div>
+</div>
+
+<!-- — PAGE WRAPPER — -->
+<div class="page">
+
+<!-- — HEADER — -->
+<div class="header">
+  <div class="header-top">
+    <div class="wordmark"><img src="arcatype-logo-V1.svg" alt="Arcatype" style="height:12px;filter:brightness(0) invert(1);opacity:.35;vertical-align:middle;margin-right:8px;">— Investor One-Pager 2026</div>
+    <div class="header-pills">
+      <div class="pill">Amsterdam</div>
+      <div class="pill">Early stage · Pre-seed</div>
+      <div class="pill">Confidential</div>
+    </div>
+  </div>
+  <h1 class="header-headline">Curated discovery and<br>intelligence for brands that<br><em>deserve to be found.</em></h1>
+  <p class="header-sub">A curated discovery platform and intelligence layer for independent lifestyle brands — and the calmer corner of commerce for the people who care about what they buy. Proof-backed discovery, brand benchmarking, and category intelligence in one product that didn't exist before.</p>
+  <div class="header-bottom">
+    <div class="header-stat">
+      <div class="header-stat-val">€150K</div>
+      <div class="header-stat-label">Pre-seed · now</div>
+    </div>
+    <div class="header-divider"></div>
+    <div class="header-stat">
+      <div class="header-stat-val">€1.09M</div>
+      <div class="header-stat-label">3-year revenue projection</div>
+    </div>
+    <div class="header-divider"></div>
+    <div class="header-stat">
+      <div class="header-stat-val">€9T+</div>
+      <div class="header-stat-label">Combined lifestyle TAM</div>
+    </div>
+    <div class="header-divider"></div>
+    <div class="header-stat">
+      <div class="header-stat-val">2027</div>
+      <div class="header-stat-label">EU DPP mandatory — our tailwind</div>
+    </div>
+  </div>
+  <div class="header-contact">
+    <a href="https://arcatype.co">arcatype.co</a>
+    <span>·</span>
+    <a href="mailto:bas@arcatype.co">bas@arcatype.co</a>
+    <span>·</span>
+    <a href="tel:+31640799741">+316 40799741</a>
+  </div>
+</div>
+
+<!-- — BODY GRID — -->
+<div class="body">
+
+  <!-- PROBLEM — FULL WIDTH -->
+  <div class="problem-section">
+    <div class="section-label">The problem</div>
+    <div class="problem-grid">
+      <div class="prob-card">
+        <div class="prob-num">01</div>
+        <div class="prob-title">For brands: discovery is broken</div>
+        <div class="prob-body">Attention is fragmented. CAC is rising. Wholesale is less predictable. The brands that make things meant to last need time and trust — but the market rewards constant output and pay-to-play reach.</div>
+      </div>
+      <div class="prob-card">
+        <div class="prob-num">02</div>
+        <div class="prob-title">For brands: no intelligence layer</div>
+        <div class="prob-body">WGSN costs €25K/year and targets enterprise. There is no mid-market product giving independent brands competitive benchmarks, category trend signals, or digital product data readiness.</div>
+      </div>
+      <div class="prob-card">
+        <div class="prob-num">03</div>
+        <div class="prob-title">For consumers: discovery is noise</div>
+        <div class="prob-body">Finding brands worth caring about means endless scrolling and algorithm-driven feeds. There is no place built for the consumer who values quality, craftsmanship, and intention over volume.</div>
+      </div>
+    </div>
+    <div class="card" style="margin-top:1px; border-radius: 0 0 8px 8px; border-top: none;">
+      <div class="card-body"><strong style="color:var(--text);font-weight:500;">The result:</strong> the market rewards loudness, not quality. Brands making exceptional products are at a structural disadvantage against mass brands — and no curated space exists for the people who would buy differently if they could find differently.</div>
+    </div>
+  </div>
+
+  <!-- LEFT COLUMN -->
+  <div class="left-col">
+
+    <!-- SOLUTION -->
+    <div>
+      <div class="section-label">The solution</div>
+      <div class="stack">
+        <div class="stack-row">
+          <div class="stack-row-label">Human-curated database</div>
+          <div class="stack-row-title">Every brand passes a taste filter</div>
+          <div class="stack-row-body">Brands are scored across Craft, Character, and Care — anchored to real data sources, not analyst opinion. The result is a standard the industry can reference.</div>
+        </div>
+        <div class="stack-row">
+          <div class="stack-row-label">Intelligence outputs</div>
+          <div class="stack-row-title">Gap analysis, benchmarking, trend signals</div>
+          <div class="stack-row-body">Brands receive competitive benchmarks, market white space reports, and cross-brand tastemaker affinity data — insights that only exist inside Arcatype.</div>
+        </div>
+        <div class="stack-row">
+          <div class="stack-row-label">Offline moments</div>
+          <div class="stack-row-title">Events as acquisition + enrichment engine</div>
+          <div class="stack-row-body">Curated brand experiences convert attention into trust and generate the community signals that make the database richer with every edition.</div>
+        </div>
+      </div>
+      <div class="card" style="margin-top:1px; border-radius: 0 0 8px 8px; border-top: none;">
+        <div class="card-body">Online and offline reinforce each other. Offline builds community and trust with a highly focused audience. Online delivers the intelligence brands pay for. Both are needed to make the system work.</div>
+      </div>
+    </div>
+
+    <!-- BUSINESS MODEL -->
+    <div>
+      <div class="section-label">Business model</div>
+      <div class="tier-row">
+        <div class="tier-cell">
+          <div class="tier-name">Featured Partner</div>
+          <div class="tier-price">€600</div>
+          <div class="tier-per">per year</div>
+          <div class="tier-feats">
+            <div class="tier-feat"><span class="feat-dash">–</span>Visibility + performance data</div>
+            <div class="tier-feat"><span class="feat-dash">–</span>Event eligibility</div>
+            <div class="tier-feat"><span class="feat-dash">–</span>Curated presence in the index</div>
+          </div>
+        </div>
+        <div class="tier-cell">
+          <div class="tier-name">Experiences</div>
+          <div class="tier-price">€1.5–10K</div>
+          <div class="tier-per">per slot</div>
+          <div class="tier-feats">
+            <div class="tier-feat"><span class="feat-dash">–</span>Event role + content bundle</div>
+            <div class="tier-feat"><span class="feat-dash">–</span>Lead capture</div>
+            <div class="tier-feat"><span class="feat-dash">–</span>Post-event reporting</div>
+          </div>
+        </div>
+        <div class="tier-cell dark">
+          <div class="tier-name">Intelligence</div>
+          <div class="tier-price">€9,600</div>
+          <div class="tier-per">per year · €800/mo</div>
+          <div class="tier-feats">
+            <div class="tier-feat"><span class="feat-dash">–</span>Competitive benchmarks</div>
+            <div class="tier-feat"><span class="feat-dash">–</span>Trend signals</div>
+            <div class="tier-feat"><span class="feat-dash">–</span>Category intelligence</div>
+          </div>
+        </div>
+      </div>
+      <div class="card" style="margin-top:1px; border-radius: 0 0 8px 8px; border-top: none;">
+        <div class="card-body"><strong style="color:var(--text);font-weight:500;">Listed tier</strong> (free) gives all curated brands a presence in the index. The intelligence tier converts discoverability into a recurring subscription.</div>
+      </div>
+    </div>
+
+    <!-- FINANCIALS -->
+    <div>
+      <div class="section-label">Financial milestones</div>
+      <div class="stat-inline">
+        <div class="stat-cell">
+          <div class="stat-val">€1.09M</div>
+          <div class="stat-label">3-year revenue projection</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-val">€92K</div>
+          <div class="stat-label">Monthly revenue at scale</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-val">4:1</div>
+          <div class="stat-label">LTV:CAC ratio</div>
+        </div>
+      </div>
+      <div class="card" style="margin-top:1px; border-radius: 0 0 8px 8px; border-top: none;">
+        <div class="card-body">Profitable in Year 3. 889 subscribers by M36 (766 Featured · 123 Intelligence). Seed round of €300K follows at Month 11 on demonstrated traction.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- RIGHT COLUMN -->
+  <div class="right-col">
+
+    <!-- WHY NOW -->
+    <div>
+      <div class="section-label">Why now</div>
+      <div class="stack">
+        <div class="stack-row">
+          <div class="stack-row-label">Consumer shift</div>
+          <div class="stack-row-title">Taste over algorithm</div>
+          <div class="stack-row-body">82% of consumers rate values alignment as a top purchase driver. Trust has shifted to curated, human recommendation. Resale is becoming a discovery engine — shoppers see what holds value, then return to buy new.</div>
+        </div>
+        <div class="stack-row">
+          <div class="stack-row-label">Regulatory tailwind</div>
+          <div class="stack-row-title">EU DPP mandatory by 2027</div>
+          <div class="stack-row-body">Arcatype is already collecting DPP-specification data. The regulation creates urgency and a captive compliance market — without us having to manufacture the need.</div>
+        </div>
+        <div class="stack-row">
+          <div class="stack-row-label">Cultural shift</div>
+          <div class="stack-row-title">Quality is the new status signal</div>
+          <div class="stack-row-body">Value for money matters more than ever, and people are getting sharper about what's worth it. Luxury and status are shifting from price tags to real experiences and craftsmanship you can nerd out about. The best pieces don't follow trends — they fit identity.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DEFENSIBILITY / MOAT -->
+    <div>
+      <div class="section-label">The moat</div>
+      <div class="moat-grid">
+        <div class="moat-row">
+          <div>
+            <div class="moat-name">Tastemaker network</div>
+            <div class="moat-type">Network moat</div>
+          </div>
+          <div class="moat-tag tag-hard">Hardest to copy</div>
+        </div>
+        <div class="moat-row">
+          <div>
+            <div class="moat-name">Human-curated brand database</div>
+            <div class="moat-type">Data moat — compounds with every brand added</div>
+          </div>
+          <div class="moat-tag tag-hard">Hardest to copy</div>
+        </div>
+        <div class="moat-row">
+          <div>
+            <div class="moat-name">Cross-brand affinity signal data</div>
+            <div class="moat-type">Flywheel moat — starts at zero for any new entrant</div>
+          </div>
+          <div class="moat-tag tag-grow">Compounds over time</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HOW WE WIN -->
+    <div>
+      <div class="section-label">How we win — the playbook exists</div>
+      <div class="stack">
+        <div class="stack-row">
+          <div class="stack-row-label">ShopMy · $1.5B · Oct 2025</div>
+          <div class="stack-row-title">Taste over advertising</div>
+          <div class="stack-row-body">Curation and taste scale commercially. Now expanding into wellness, home, and food. We take the thesis further: intelligence, not just commerce.</div>
+        </div>
+        <div class="stack-row">
+          <div class="stack-row-label">Cosmos.so · $15M Series A</div>
+          <div class="stack-row-title">Depth beats scale</div>
+          <div class="stack-row-body">Built the anti-Pinterest: no ads, no likes, no noise. #1 in the App Store across 22 countries. We go further: structured data, not just visual inspiration.</div>
+        </div>
+        <div class="stack-row">
+          <div class="stack-row-label">Discogs · 19M+ releases · Est. 2000</div>
+          <div class="stack-row-title">Community builds the standard</div>
+          <div class="stack-row-body">A dataset so trusted the music industry had to reference it. The marketplace wasn't planned — it emerged. We take the ambition: build the standard, the business follows.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- COMPETITIVE LANDSCAPE — FULL WIDTH -->
+  <div class="comp-section">
+    <div class="section-label">Competitive landscape — existing players serve <em style="font-style:italic;">the wrong customer</em></div>
+    <div class="comp-table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th style="text-align:left; width:14%;">Platform</th>
+            <th style="text-align:left; width:12%;">Annual price</th>
+            <th>Human curation</th>
+            <th>Sustainability scoring</th>
+            <th>Tastemaker affinity</th>
+            <th>Independent brands</th>
+            <th>Multi-category</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>WGSN</td>
+            <td>$15K–$25K</td>
+            <td class="comp-dash">–</td>
+            <td class="comp-dash">–</td>
+            <td class="comp-dash">–</td>
+            <td class="comp-dash">–</td>
+            <td class="comp-check">&#10003;</td>
+          </tr>
+          <tr>
+            <td>BoF Insights</td>
+            <td>$499–$999</td>
+            <td class="comp-check">&#10003;</td>
+            <td class="comp-dash">–</td>
+            <td class="comp-dash">–</td>
+            <td class="comp-dash">–</td>
+            <td class="comp-dash">–</td>
+          </tr>
+          <tr>
+            <td>Good On You</td>
+            <td>Free</td>
+            <td class="comp-dash">–</td>
+            <td class="comp-check">&#10003;</td>
+            <td class="comp-dash">–</td>
+            <td class="comp-check">&#10003;</td>
+            <td class="comp-dash">–</td>
+          </tr>
+          <tr>
+            <td>ShopMy</td>
+            <td>$399+/mo</td>
+            <td class="comp-check">&#10003;</td>
+            <td class="comp-dash">–</td>
+            <td class="comp-check">&#10003;</td>
+            <td class="comp-check">&#10003;</td>
+            <td class="comp-dash">–</td>
+          </tr>
+          <tr class="arcatype-row">
+            <td>Arcatype</td>
+            <td>€600–€9K</td>
+            <td class="comp-check">&#10003;</td>
+            <td class="comp-check">&#10003;</td>
+            <td class="comp-check">&#10003;</td>
+            <td class="comp-check">&#10003;</td>
+            <td class="comp-check">&#10003;</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card" style="margin-top:1px; border-radius: 0 0 8px 8px; border-top: none;">
+      <div class="card-body"><strong style="color:var(--text);font-weight:500;">The white space:</strong> No existing platform combines all five: human curation, sustainability scoring, tastemaker affinity signals, independent brand focus, and multi-category coverage. This combination is Arcatype's structural differentiation — and it cannot be replicated by adding a feature to an existing product.</div>
+    </div>
+  </div>
+
+  <!-- TRACTION — FULL WIDTH -->
+  <div class="problem-section">
+    <div class="section-label">Traction &amp; validation</div>
+    <div class="traction-grid">
+      <div class="traction-cell">
+        <div class="traction-date">Now</div>
+        <div class="traction-title">&gt;850 brands tracked</div>
+        <div class="traction-sub">Actively being onboarded into the index</div>
+      </div>
+      <div class="traction-cell">
+        <div class="traction-date">9 April 2026</div>
+        <div class="traction-title">Pre-launch pilot event</div>
+        <div class="traction-sub">Testing experience format and brand partner outcomes</div>
+      </div>
+      <div class="traction-cell">
+        <div class="traction-date">May 2026</div>
+        <div class="traction-title">Industry launch + Index MVP</div>
+        <div class="traction-sub">Brand Index MVP ships alongside larger industry launch</div>
+      </div>
+      <div class="traction-cell">
+        <div class="traction-date">September 2026</div>
+        <div class="traction-title">Flagship exposition</div>
+        <div class="traction-sub">Month-long event — first large-scale proof point</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TEAM + ASK — FULL WIDTH -->
+  <div class="two-side">
+    <!-- TEAM -->
+    <div>
+      <div class="section-label">The team</div>
+      <div class="team-grid">
+        <div class="team-cell">
+          <div class="team-av">AS</div>
+          <div class="team-name">Alexandra Schott</div>
+          <div class="team-role">Co-founder — Marketing &amp; Creative Direction</div>
+          <div class="team-bio">Ex VP JamesEdition, Antler, Fundsup (exit). Track record building community and cultural relevance at scale across luxury, technology, and media.</div>
+        </div>
+        <div class="team-cell">
+          <div class="team-av">BS</div>
+          <div class="team-name">Bas Slootman</div>
+          <div class="team-role">Co-founder — Partnerships &amp; Business Development</div>
+          <div class="team-bio">Co-founder of The Fabric Connector. Former Partnership Lead at CISE Network; co-hosted two cohorts of the Amsterdam Circular Startup Accelerator.</div>
+        </div>
+      </div>
+      <div class="card" style="margin-top:1px; border-radius: 0 0 8px 8px; border-top: none;">
+        <div class="card-body">Currently in conversations with two potential technical co-founders and a creative director to complete the founding team.</div>
+      </div>
+    </div>
+
+    <!-- ASK -->
+    <div>
+      <div class="section-label">The ask</div>
+      <div class="ask-card">
+        <div class="ask-label">Pre-seed round — now</div>
+        <div class="ask-headline">€150,000</div>
+        <div class="ask-narrative">The Brand Index MVP launches in May — we're building it now. This raise takes Arcatype from database to intelligence platform. The September exposition generates direct revenue from brand participation — it funds itself while proving the model at scale. <strong>Goal: validated traction and unit economics to raise a €300K seed in early 2027.</strong></div>
+        <div class="ask-cols">
+          <div>
+            <div class="ask-col-title">Use of funds</div>
+            <ul class="ask-list">
+              <li>Co-founder salary — full-time commitment</li>
+              <li>CTO co-founder — intelligence platform</li>
+              <li>Creative Director co-founder</li>
+              <li>September exposition production</li>
+              <li>2 interns, admin, sales rep</li>
+            </ul>
+          </div>
+          <div>
+            <div class="ask-col-title">Milestones unlocked</div>
+            <ul class="ask-list">
+              <li>Intelligence platform live</li>
+              <li>50 Featured Partners onboarded</li>
+              <li>3 paid experiences completed</li>
+              <li>Exposition revenue-positive</li>
+              <li>Runway through April 2027</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- — FOOTER — -->
+<div class="footer">
+  <div class="footer-left"><img src="arcatype-logo-V1.svg" alt="Arcatype" style="height:10px;opacity:.4;vertical-align:middle;margin-right:6px;">arcatype.co</div>
+  <div class="footer-contacts">
+    <div class="footer-contact">Alexandra Schott · alexandra@arcatype.co</div>
+    <div class="footer-contact">Bas Slootman · bas@arcatype.co</div>
+  </div>
+  <div class="footer-right">Amsterdam · April 2026 · Confidential</div>
+</div>
+
+</div><!-- /page -->
+
+<script>
+  const PASSWORD = 'herenmarkt2026';
+
+  function checkPassword() {
+    const val = document.getElementById('gate-input').value;
+    if (val === PASSWORD) {
+      document.getElementById('gate').classList.add('hidden');
+    } else {
+      document.getElementById('gate-error').textContent = 'Incorrect password.';
+      document.getElementById('gate-input').value = '';
+      document.getElementById('gate-input').focus();
+    }
+  }
+
+  document.getElementById('gate-input').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') checkPassword();
+    document.getElementById('gate-error').textContent = '';
+  });
+</script>
+
+</body>
+</html>
