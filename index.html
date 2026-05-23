@@ -1,551 +1,1122 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>Arcatype — Investor One-Pager 2026</title>
-<meta name="description" content="Arcatype — curated discovery and intelligence for brands that deserve to be found. Investor one-pager, April 2026." />
+<meta name="description" content="Arcatype — human taste, enhanced with AI. A curated cultural network at the intersection of design, sound, and considered living. Investor one-pager, 2026." />
 <link rel="icon" href="assets/arcatype-logo.svg" />
-<link rel="stylesheet" href="styles.css" />
-<style id="tweakStyles">
-  /* Tweakable spacing vars — overridden live */
-  :root {
-    --tw-body-line: 1.55;
-    --tw-display-line: 1.02;
-    --tw-h2-line: 1.04;
-    --tw-h3-line: 1.1;
-    --tw-section-gap: 1;    /* multiplier on --pad-y */
-    --tw-row-gap: 1;        /* multiplier on why-row vertical padding */
-    --tw-para-space: 0;     /* extra px between block-level text */
-  }
-  body { line-height: var(--tw-body-line); }
-  .hero-sub, .lede, .p-card p, .s-card p, .why-row .body, .play p, .tier-sub, .ask .ask-body, .team p { line-height: var(--tw-body-line); }
-  .hero-title, .display { line-height: var(--tw-display-line); }
-  .h2 { line-height: var(--tw-h2-line); }
-  .h3, .p-card h3, .s-card h3, .tier .tier-name, .play .name, .moat .chip .title, .timeline-item .what, .why-row .title { line-height: var(--tw-h3-line); }
-  main > .section, .hero { padding-top: calc(var(--pad-y) * var(--tw-section-gap)); padding-bottom: calc(var(--pad-y) * var(--tw-section-gap)); }
-  .why-row { padding-top: calc(32px * var(--tw-row-gap)); padding-bottom: calc(32px * var(--tw-row-gap)); }
-  @media (min-width: 900px) { .why-row { padding-top: calc(40px * var(--tw-row-gap)); padding-bottom: calc(40px * var(--tw-row-gap)); } }
-  .section-head { margin-bottom: calc(40px + var(--tw-para-space) * 1px); }
-  .p-card, .s-card, .tier, .play, .timeline-item { gap: calc(16px + var(--tw-para-space) * 0.6px); }
-  .hero-sub { margin-bottom: calc(40px + var(--tw-para-space) * 1px); }
-  .pull { margin-top: calc(40px + var(--tw-para-space) * 1px); padding-top: calc(28px + var(--tw-para-space) * 0.6px); }
+<style>
+/* ============================================================
+   FONTS
+   ============================================================ */
+@font-face {
+  font-family: "Monument Grotesk";
+  src: url("assets/fonts/MonumentGrotesk-Regular.otf") format("opentype");
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Monument Grotesk Mono";
+  src: url("assets/fonts/MonumentGroteskMono-Regular.otf") format("opentype");
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Oracle";
+  src: url("assets/fonts/Oracle-Book.otf") format("opentype");
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Oracle";
+  src: url("assets/fonts/Oracle-BookItalic.otf") format("opentype");
+  font-weight: 400; font-style: italic; font-display: swap;
+}
 
-  /* Tweaks panel */
-  #tweaksPanel {
-    position: fixed;
-    bottom: 16px; right: 16px;
-    z-index: 90;
-    width: min(320px, calc(100vw - 32px));
-    background: var(--cloud);
-    border: 1px solid var(--ink);
-    border-radius: 16px;
-    box-shadow: 0 20px 60px rgba(20, 19, 17, 0.18);
-    font-family: var(--f-ui);
-    display: none;
-    overflow: hidden;
+/* ============================================================
+   ARCATYPE — Investor landing page
+   Editorial / refined aesthetic. Warm parchment + ink.
+   ============================================================ */
+
+:root {
+  --bg:        #f4f3f0;
+  --bg-2:      #eeece7;
+  --bg-3:      #e8e5de;
+  --ink:       #0e0e0d;
+  --ink-2:     #2a2825;
+  --muted:     #7a746b;
+  --rule:      #ddd9d0;
+  --rule-soft: #e7e3da;
+  --cloud:     #faf9f6;
+  --paper:     #fcfbf8;
+
+  --human:     #8a7d6b;
+  --ai:        #6b6f73;
+
+  --f-display: "Oracle", "Times New Roman", Georgia, serif;
+  --f-editor:  "Oracle", "Times New Roman", Georgia, serif;
+  --f-ui:      "Monument Grotesk", system-ui, -apple-system, sans-serif;
+  --f-mono:    "Monument Grotesk Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  --maxw:   1180px;
+  --gutter: 22px;
+  --dur:    640ms;
+  --ease:   cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+@media (min-width: 760px)  { :root { --gutter: 48px; } }
+@media (min-width: 1100px) { :root { --gutter: 64px; } }
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  background: var(--bg);
+  color: var(--ink);
+  scroll-behavior: smooth;
+}
+body {
+  font-family: var(--f-ui);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+p { margin: 0; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+::selection { background: var(--ink); color: var(--bg); }
+
+.wrap {
+  width: 100%;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+  position: relative;
+  z-index: 2;
+}
+
+.eyebrow {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.serif { font-family: var(--f-display); font-weight: 400; }
+.italic { font-style: italic; }
+
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+.reveal.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  html { scroll-behavior: auto; }
+}
+
+/* ============================================================
+   NAV
+   ============================================================ */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px var(--gutter);
+  background: color-mix(in srgb, var(--bg) 82%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--dur) var(--ease), background var(--dur) var(--ease);
+}
+.nav.scrolled { border-bottom-color: var(--rule); }
+.nav-logo {
+  font-family: var(--f-display);
+  font-size: 19px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.nav-meta { color: var(--muted); }
+.nav-cta {
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  padding: 8px 18px;
+  transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+.nav-cta:hover { background: var(--ink); color: var(--bg); }
+@media (max-width: 640px) { .nav-meta { display: none; } }
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero {
+  padding-top: 168px;
+  padding-bottom: 90px;
+  position: relative;
+}
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 40px;
+}
+.hero-tag .dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--human);
+}
+.hero h1 {
+  font-family: var(--f-display);
+  font-weight: 400;
+  font-size: clamp(3.2rem, 9vw, 7rem);
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  margin: 0;
+  max-width: 14ch;
+}
+.hero h1 .en {
+  display: block;
+  font-style: italic;
+  color: var(--ink-2);
+}
+.hero-sub {
+  font-family: var(--f-editor);
+  font-size: clamp(1.15rem, 2.2vw, 1.5rem);
+  line-height: 1.55;
+  color: var(--ink-2);
+  max-width: 50ch;
+  margin-top: 36px;
+}
+.hero-pillars {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 10px;
+  margin-top: 28px;
+}
+.pillar {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  padding: 7px 15px;
+  background: var(--cloud);
+}
+.pillar b { font-weight: 500; color: var(--ink); }
+
+.stat-strip {
+  margin-top: 70px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  border-radius: 14px;
+  overflow: hidden;
+}
+@media (min-width: 860px) { .stat-strip { grid-template-columns: repeat(4, 1fr); } }
+.stat {
+  background: var(--paper);
+  padding: 26px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.stat-val {
+  font-family: var(--f-display);
+  font-size: clamp(1.9rem, 3.4vw, 2.5rem);
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+.stat-label {
+  font-family: var(--f-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+/* ============================================================
+   SECTION SCAFFOLD
+   ============================================================ */
+.section {
+  padding-top: clamp(80px, 11vw, 150px);
+  padding-bottom: clamp(80px, 11vw, 150px);
+  border-top: 1px solid var(--rule);
+  position: relative;
+}
+.section-num {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+  margin-bottom: 18px;
+}
+.section-title {
+  font-family: var(--f-display);
+  font-weight: 400;
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  line-height: 1.04;
+  letter-spacing: -0.015em;
+  max-width: 18ch;
+  margin: 0;
+}
+.section-title .italic { color: var(--muted); }
+.section-lead {
+  font-family: var(--f-editor);
+  font-size: clamp(1.05rem, 1.8vw, 1.3rem);
+  line-height: 1.6;
+  color: var(--ink-2);
+  max-width: 56ch;
+  margin-top: 26px;
+}
+
+/* ============================================================
+   THE SHIFT (barbell)
+   ============================================================ */
+.shift-vis {
+  margin-top: 64px;
+  display: grid;
+  gap: 18px;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 900px) {
+  .shift-vis {
+    grid-template-columns: 1fr auto 1fr;
+    align-items: stretch;
+    gap: 0;
   }
-  #tweaksPanel.is-open { display: block; }
-  #tweaksPanel .tw-head {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 14px 16px;
-    border-bottom: 1px solid var(--rule);
-  }
-  #tweaksPanel .tw-title {
-    font-family: var(--f-mono);
-    font-size: 11px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-  }
-  #tweaksPanel .tw-close {
-    font-family: var(--f-mono);
-    font-size: 14px;
-    padding: 4px 8px;
-    cursor: pointer;
-    color: var(--muted);
-  }
-  #tweaksPanel .tw-body {
-    padding: 14px 16px 18px;
-    max-height: 70vh;
-    overflow-y: auto;
-  }
-  #tweaksPanel .tw-row { padding: 10px 0; border-bottom: 1px solid var(--rule-soft); }
-  #tweaksPanel .tw-row:last-child { border-bottom: 0; }
-  #tweaksPanel .tw-label {
-    display: flex; justify-content: space-between; align-items: baseline;
-    font-family: var(--f-mono);
-    font-size: 10px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--ink);
-    margin-bottom: 8px;
-  }
-  #tweaksPanel .tw-label .val { color: var(--muted); }
-  #tweaksPanel input[type="range"] {
-    width: 100%;
-    accent-color: var(--ink);
-  }
-  #tweaksPanel .tw-reset {
-    margin-top: 14px;
-    display: inline-flex;
+}
+.end {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 16px;
+  padding: 34px 32px 36px;
+  position: relative;
+  overflow: hidden;
+}
+.end::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+}
+.end.ai::before    { background: var(--ai); }
+.end.human::before { background: var(--human); }
+.end-tag {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+}
+.end.ai .end-tag    { color: var(--ai); }
+.end.human .end-tag { color: var(--human); }
+.end-tag .sq { width: 7px; height: 7px; }
+.end.ai .end-tag .sq    { background: var(--ai); }
+.end.human .end-tag .sq { background: var(--human); }
+.end h3 {
+  font-family: var(--f-display);
+  font-weight: 400;
+  font-size: 1.55rem;
+  line-height: 1.15;
+  margin: 0 0 14px;
+}
+.end p {
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: var(--ink-2);
+}
+.barbell-bar { display: none; }
+@media (min-width: 900px) {
+  .barbell-bar {
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 8px;
-    padding: 8px 14px;
-    border: 1px solid var(--ink);
-    border-radius: 999px;
+    justify-content: center;
+    padding: 0 30px;
+    text-align: center;
+    gap: 12px;
+  }
+  .barbell-bar .line {
+    width: 1px;
+    flex: 1;
+    background: linear-gradient(var(--human), var(--ai));
+  }
+  .barbell-bar .word {
     font-family: var(--f-mono);
     font-size: 10px;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
-    cursor: pointer;
-    background: transparent;
+    color: var(--muted);
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    padding: 14px 0;
   }
-  #tweaksPanel .tw-reset:hover { background: var(--ink); color: var(--cloud); }
+}
+.shift-close {
+  margin-top: 44px;
+  font-family: var(--f-editor);
+  font-size: clamp(1.2rem, 2.4vw, 1.7rem);
+  line-height: 1.5;
+  max-width: 42ch;
+}
+.shift-close b { font-weight: 400; color: var(--human); font-style: italic; }
+
+/* ============================================================
+   SOLUTION — three parts
+   ============================================================ */
+.solution-grid {
+  margin-top: 64px;
+  display: grid;
+  gap: 22px;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 820px) { .solution-grid { grid-template-columns: repeat(3, 1fr); } }
+.sol-card {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+.sol-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 50px -28px rgba(20,19,17,0.4);
+}
+.sol-img {
+  aspect-ratio: 4 / 3;
+  width: 100%;
+  object-fit: cover;
+  filter: saturate(0.92) contrast(1.02);
+}
+.sol-body { padding: 26px 26px 30px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
+.sol-kicker {
+  font-family: var(--f-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.sol-card h3 {
+  font-family: var(--f-display);
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 1.15;
+  margin: 0;
+}
+.sol-card p { font-size: 14px; line-height: 1.65; color: var(--ink-2); }
+.sol-end {
+  margin-top: auto;
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding-top: 14px;
+}
+.sol-end.ai    { color: var(--ai); }
+.sol-end.human { color: var(--human); }
+
+/* ============================================================
+   BUSINESS MODEL — tiers
+   ============================================================ */
+.tiers {
+  margin-top: 64px;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 820px) { .tiers { grid-template-columns: repeat(3, 1fr); } }
+.tier {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 16px;
+  padding: 30px 28px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.tier.feature { background: var(--bg-3); }
+.tier-name {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.tier-price {
+  font-family: var(--f-display);
+  font-size: 2.1rem;
+  line-height: 1;
+  margin: 6px 0 4px;
+  letter-spacing: -0.01em;
+}
+.tier-sub { font-size: 13.5px; color: var(--muted); margin-bottom: 16px; }
+.tier ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 9px; }
+.tier li {
+  font-size: 14px;
+  color: var(--ink-2);
+  padding-left: 20px;
+  position: relative;
+  line-height: 1.5;
+}
+.tier li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 9px;
+  width: 7px; height: 7px;
+  border: 1px solid var(--ink);
+  border-radius: 50%;
+}
+.model-note {
+  margin-top: 34px;
+  font-size: 14px;
+  color: var(--muted);
+  font-family: var(--f-editor);
+  font-style: italic;
+  max-width: 60ch;
+}
+
+/* ============================================================
+   MOAT
+   ============================================================ */
+.moat-grid {
+  margin-top: 60px;
+  display: grid;
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  border-radius: 14px;
+  overflow: hidden;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 760px) { .moat-grid { grid-template-columns: repeat(3, 1fr); } }
+.moat {
+  background: var(--paper);
+  padding: 30px 28px 34px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.moat-kicker {
+  font-family: var(--f-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--human);
+}
+.moat h3 {
+  font-family: var(--f-display);
+  font-weight: 400;
+  font-size: 1.45rem;
+  line-height: 1.12;
+  margin: 0;
+}
+.moat p { font-size: 13.5px; color: var(--muted); line-height: 1.55; }
+
+/* ============================================================
+   HOW WE WIN — playbook
+   ============================================================ */
+.plays { margin-top: 60px; display: flex; flex-direction: column; gap: 0; }
+.play {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+  padding: 30px 0;
+  border-top: 1px solid var(--rule);
+}
+.play:last-child { border-bottom: 1px solid var(--rule); }
+@media (min-width: 860px) {
+  .play { grid-template-columns: 0.7fr 0.9fr 1.4fr; gap: 36px; align-items: baseline; }
+}
+.play-name { font-family: var(--f-display); font-size: 1.35rem; }
+.play-meta { font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.08em; color: var(--muted); text-transform: uppercase; margin-top: 4px; }
+.play-thesis { font-family: var(--f-editor); font-style: italic; font-size: 1.05rem; color: var(--ink-2); }
+.play-body { font-size: 14px; color: var(--ink-2); line-height: 1.6; }
+
+/* ============================================================
+   TRACTION — timeline
+   ============================================================ */
+.timeline { margin-top: 60px; display: flex; flex-direction: column; gap: 0; }
+.t-item {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 6px;
+  padding: 26px 0;
+  border-top: 1px solid var(--rule);
+  position: relative;
+}
+.t-item:last-child { border-bottom: 1px solid var(--rule); }
+@media (min-width: 760px) {
+  .t-item { grid-template-columns: 0.5fr 1.5fr; gap: 40px; align-items: baseline; }
+}
+.t-when {
+  font-family: var(--f-mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--human);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.t-when .check { color: var(--human); }
+.t-what h4 { font-family: var(--f-display); font-weight: 400; font-size: 1.3rem; margin: 0 0 6px; }
+.t-what p { font-size: 14px; color: var(--ink-2); line-height: 1.6; }
+
+/* ============================================================
+   TEAM
+   ============================================================ */
+.team-grid {
+  margin-top: 60px;
+  display: grid;
+  gap: 40px;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 900px) { .team-grid { grid-template-columns: 1fr 1fr; gap: 56px; } }
+.member { display: flex; flex-direction: column; gap: 13px; }
+.member-name { font-family: var(--f-display); font-size: 1.6rem; }
+.member-role { font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--human); margin-bottom: 6px; }
+.member-bio { font-size: 14.5px; color: var(--ink-2); line-height: 1.65; }
+.member-lead {
+  font-family: var(--f-editor);
+  font-size: 15.5px;
+  line-height: 1.55;
+  color: var(--ink);
+  font-style: italic;
+  margin-bottom: 4px;
+}
+.member-li {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--f-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: -2px;
+  margin-bottom: 6px;
+  transition: color var(--dur) var(--ease);
+  align-self: flex-start;
+}
+.member-li:hover { color: var(--ink); }
+.team-photo {
+  width: 100%;
+  border-radius: 16px;
+  margin-top: 50px;
+  filter: saturate(0.94);
+}
+.team-open {
+  margin-top: 40px;
+  padding: 24px 28px;
+  border: 1px dashed var(--rule);
+  border-radius: 14px;
+  font-family: var(--f-editor);
+  font-style: italic;
+  font-size: 15px;
+  color: var(--muted);
+}
+
+/* ============================================================
+   THE ASK
+   ============================================================ */
+.ask {
+  background: var(--ink);
+  color: var(--bg);
+  border-radius: 22px;
+  padding: clamp(44px, 7vw, 84px) clamp(32px, 6vw, 76px);
+}
+.ask .section-num { color: rgba(242,236,228,0.5); }
+.ask-amount {
+  font-family: var(--f-display);
+  font-size: clamp(3.4rem, 9vw, 6rem);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  margin: 8px 0 28px;
+}
+.ask-amount .sm {
+  font-size: 0.35em;
+  color: rgba(242,236,228,0.55);
+  display: block;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-family: var(--f-mono);
+  margin-bottom: 14px;
+}
+.ask-narr {
+  font-family: var(--f-editor);
+  font-size: clamp(1.05rem, 2vw, 1.3rem);
+  line-height: 1.6;
+  color: rgba(242,236,228,0.82);
+  max-width: 60ch;
+}
+.ask-narr b { color: var(--bg); font-weight: 400; }
+.ask-cols {
+  margin-top: 54px;
+  display: grid;
+  gap: 40px;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 760px) { .ask-cols { grid-template-columns: 1fr 1fr; gap: 64px; } }
+.ask-col h4 {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(242,236,228,0.5);
+  margin: 0 0 18px;
+}
+.ask-col ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+.ask-col li {
+  font-size: 15px;
+  color: rgba(242,236,228,0.92);
+  padding-left: 22px;
+  position: relative;
+  line-height: 1.5;
+}
+.ask-col li::before {
+  content: "";
+  position: absolute; left: 0; top: 9px;
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--human);
+}
+.ask-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 48px;
+  background: var(--bg);
+  color: var(--ink);
+  border-radius: 999px;
+  padding: 14px 28px;
+  font-family: var(--f-mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: transform var(--dur) var(--ease);
+}
+.ask-cta:hover { transform: translateX(4px); }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer {
+  padding: 70px var(--gutter) 50px;
+  border-top: 1px solid var(--rule);
+}
+.footer-inner { max-width: var(--maxw); margin: 0 auto; display: flex; flex-direction: column; gap: 28px; }
+.footer-line {
+  font-family: var(--f-display);
+  font-size: clamp(1.3rem, 3vw, 2rem);
+  max-width: 26ch;
+  line-height: 1.15;
+}
+.footer-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 28px;
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding-top: 28px;
+  border-top: 1px solid var(--rule);
+}
+.footer-meta a:hover { color: var(--ink); }
+.footer-spacer { flex: 1; }
+
+/* gate */
+#gate {
+  position: fixed; inset: 0; z-index: 999;
+  background: var(--ink);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 22px;
+}
+#gate.hidden { display: none; }
+#gate .gl { font-family: var(--f-display); font-size: 22px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--bg); }
+#gate .gsub { font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(242,236,228,0.4); }
+.gate-row { display: flex; border: 1px solid rgba(242,236,228,0.18); border-radius: 999px; overflow: hidden; }
+#gate input { background: transparent; border: 0; outline: 0; color: var(--bg); font-family: var(--f-ui); font-size: 14px; padding: 12px 20px; width: 210px; }
+#gate input::placeholder { color: rgba(242,236,228,0.3); }
+#gate button { border-left: 1px solid rgba(242,236,228,0.18); color: rgba(242,236,228,0.6); font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; padding: 12px 22px; transition: color var(--dur); }
+#gate button:hover { color: var(--bg); }
+#gate .gerr { font-size: 11px; color: #c97b54; height: 14px; }
 </style>
 </head>
 <body>
 
-<!-- ACCESS GATE -->
-<div class="gate" id="gate" role="dialog" aria-modal="true" aria-label="Access gate">
-  <div class="gate-inner">
-    <img class="gate-logo" src="assets/arcatype-logo.svg" alt="Arcatype" />
-    <div class="meta">Investor one-pager · Confidential · 2026</div>
-    <h2>Enter access code</h2>
-    <form class="gate-form" id="gateForm" autocomplete="off">
-      <input id="gateInput" type="text" placeholder="Access code" aria-label="Access code" />
-      <button class="btn" type="submit">Enter <span class="arrow">→</span></button>
-    </form>
-    <div class="gate-hint" id="gateHint"></div>
+<!-- ============ GATE ============ -->
+<div id="gate">
+  <div class="gl">Arcatype</div>
+  <div class="gsub">Investor one-pager · Confidential · 2026</div>
+  <div class="gate-row">
+    <input id="gate-input" type="password" placeholder="Access code" autocomplete="off" />
+    <button id="gate-btn">Enter →</button>
   </div>
+  <div class="gerr" id="gate-err"></div>
 </div>
 
-<!-- NAV -->
-<header class="nav" id="nav">
-  <div class="wrap nav-inner">
-    <a href="#top" aria-label="Arcatype home">
-      <img class="nav-logo" src="assets/arcatype-logo.svg" alt="Arcatype" />
-    </a>
-    <nav class="nav-meta" aria-label="Document meta">
-      <span>Investor one-pager</span>
-      <span>April 2026</span>
-      <span>Confidential</span>
-    </nav>
+<!-- ============ NAV ============ -->
+<nav class="nav" id="nav">
+  <a href="#top" class="nav-logo">Arcatype</a>
+  <div class="nav-right">
+    <span class="nav-meta">Pre-seed · Amsterdam · 2026</span>
+    <a href="#ask" class="nav-cta">The ask</a>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero wrap" id="top">
+  <div class="hero-tag reveal">
+    <span class="dot"></span>
+    <span class="eyebrow">Investor one-pager · Confidential · 2026</span>
+  </div>
+  <h1 class="reveal">Human taste,<span class="en italic">enhanced with AI.</span></h1>
+  <p class="hero-sub reveal">
+    Arcatype is a curated network at the intersection of design, sound, and considered living.
+    We select lifestyle brands on three pillars and give them presence at both ends of a
+    shifting market: real spaces and real people on one side, AI-driven discovery on the other.
+  </p>
+  <div class="hero-pillars reveal">
+    <span class="pillar"><b>Craft</b> — how it's made</span>
+    <span class="pillar"><b>Character</b> — design vision</span>
+    <span class="pillar"><b>Care</b> — for people &amp; planet</span>
+  </div>
+
+  <div class="stat-strip reveal">
+    <div class="stat"><div class="stat-val">€200K</div><div class="stat-label">Pre-seed · raising now</div></div>
+    <div class="stat"><div class="stat-val">Sept 2026</div><div class="stat-label">Flagship exhibition · partners signing</div></div>
+    <div class="stat"><div class="stat-val">€2.5M</div><div class="stat-label">ARR by year 5 · profitable</div></div>
+    <div class="stat"><div class="stat-val">1,000+</div><div class="stat-label">Brands curated</div></div>
   </div>
 </header>
 
-<main id="top">
+<!-- ============ THE SHIFT ============ -->
+<section class="section" id="shift">
+  <div class="wrap">
+    <div class="section-num reveal">01 — The shift</div>
+    <h2 class="section-title reveal">AI is creating a <span class="italic">barbell</span> in the market.</h2>
 
-  <!-- HERO -->
-  <section class="hero wrap">
-    <div class="hero-meta reveal">
-      <span><i class="pulse" aria-hidden="true"></i> Amsterdam</span>
-      <span>Early stage · Pre-seed</span>
-      <span>Raising €150K</span>
-      <span>v2026.04 · Confidential</span>
-    </div>
-
-    <h1 class="hero-title reveal" style="--delay:80ms">
-      Curated discovery and intelligence for brands that <em>deserve to&nbsp;be&nbsp;found.</em>
-    </h1>
-
-    <p class="hero-sub reveal" style="--delay:160ms">
-      The platforms brands rely on to grow sell attention to the highest bidder. The loudest brands win, not the best ones.<br><br>
-      Arcatype is a discovery platform for thoughtful lifestyle brands, online and offline. Every brand in our index is reviewed on craft (how it's made), character (what makes it desirable), and care (how it treats people and planet). If it doesn't pass, it doesn't get in.<br><br>
-      For the brands that do: visibility, data on how they compare to others in their category, and access to the kind of audience they can't reach through Instagram anymore.
-    </p>
-
-    <div class="hero-cta reveal" style="--delay:220ms">
-      <a class="btn" href="#ask">Review the ask <span class="arrow">→</span></a>
-      <a class="btn is-ghost" href="mailto:bas@arcatype.co">Book a call</a>
-    </div>
-
-    <div class="key-stats reveal" style="--delay:280ms" aria-label="Key numbers">
-      <div class="key-stat" style="opacity:1;margin:0 0 10px"><div class="num">€150K</div><div class="lbl">Pre-seed · now</div></div>
-      <div class="key-stat" style="opacity:1;margin:0 0 10px"><div class="num">€1.09M</div><div class="lbl">3-year revenue projection</div></div>
-      <div class="key-stat" style="opacity:1;margin:0 0 10px"><div class="num">€9T+</div><div class="lbl">Combined lifestyle TAM</div></div>
-      <div class="key-stat" style="opacity:1;margin:0 0 10px"><div class="num">2027</div><div class="lbl">EU DPP mandatory — our tailwind</div></div>
-    </div>
-  </section>
-
-  <!-- PROBLEM -->
-  <section class="section wrap" id="problem" style='font-family: "Oracle"'>
-    <header class="section-head reveal">
-      <div>
-        <div class="eyebrow"><span class="dot"></span> The problem</div>
+    <div class="shift-vis">
+      <div class="end ai reveal">
+        <div class="end-tag"><span class="sq"></span>One end · convenience</div>
+        <h3>Accelerating automation</h3>
+        <p>AI is speeding up convenience and automation. More is surfaced and sold with less human
+        involvement than ever before. Agentic commerce is here, and will soon be the main form of
+        online discovery.</p>
       </div>
-      <h2 class="display h2" style='max-width:18ch;font-family: "Monument Grotesk"'>The market rewards loudness, not&nbsp;quality.</h2>
-    </header>
 
-    <div class="p-grid reveal">
-      <article class="p-card" style='font-family: "Monument Grotesk"'>
-        <div class="num">01 / Brands</div>
-        <h3 style="font-family: Oracle">Discovery is broken</h3>
-        <p>Attention is fragmented. CAC is rising. Wholesale is less predictable. The brands that make things meant to last need time and trust — but the market rewards constant output and pay-to-play reach.</p>
-      </article>
-      <article class="p-card" style='font-family: "Monument Grotesk"'>
-        <div class="num">02 / Brands</div>
-        <h3 style="font-family: Oracle">No intelligence layer</h3>
-        <p>WGSN costs €25K/year and targets enterprise. There is no mid-market product giving independent brands competitive benchmarks, category trend signals, or digital product data readiness.</p>
-      </article>
-      <article class="p-card" style='font-family: "Monument Grotesk"'>
-        <div class="num">03 / Consumers</div>
-        <h3 style="font-family: Oracle">Discovery is noise</h3>
-        <p>Finding brands worth caring about means endless scrolling and algorithm-driven feeds. There is no place built for the consumer who values quality, craftsmanship, and intention over volume.</p>
-      </article>
-    </div>
-
-    <p class="pull reveal" style="font-family: Oracle">
-      Brands making exceptional products are at a structural disadvantage against mass brands —
-      and no curated space exists for the people who are design-driven
-      <strong>and want to buy with intention.</strong>
-    </p>
-  </section>
-
-  <!-- SOLUTION -->
-  <section class="section wrap" id="solution" style='font-family: "Monument Grotesk"'>
-    <header class="section-head reveal">
-      <div>
-        <div class="eyebrow"><span class="dot"></span> The solution</div>
+      <div class="barbell-bar" aria-hidden="true">
+        <span class="line"></span>
+        <span class="word">The barbell</span>
+        <span class="line"></span>
       </div>
-      <h2 class="display h2" style='max-width:22ch;font-family: Oracle;text-align:right'>One product with three reinforcing parts.</h2>
-    </header>
 
-    <div class="s-grid reveal">
-      <article class="s-card">
-        <div class="ph"><img src="assets/index-card.jpg" alt="Curated design objects in an Amsterdam showroom" /><span class="tag">Index · taste filter</span></div>
-        <div class="label">Human-curated database</div>
-        <h3 style="font-family: Oracle">Every brand passes a taste filter</h3>
-        <p>Brands are scored across Craft, Character, and Care — anchored to real data sources, not analyst opinion. The result is a standard the industry can reference.</p>
-      </article>
-      <article class="s-card">
-        <div class="ph"><img src="assets/intelligence-card.jpg" alt="A garment reflected through fragmented mirrors" /><span class="tag">Intelligence · outputs</span></div>
-        <div class="label">Gap analysis, benchmarking, trend signals</div>
-        <h3 style="font-family: Oracle">Insights that only exist inside Arcatype</h3>
-        <p>Brands receive competitive benchmarks, market white-space reports, and cross-brand tastemaker affinity data. Recurring value brands will pay for every month.</p>
-      </article>
-      <article class="s-card">
-        <div class="ph"><img src="assets/offline-card.jpg" alt="Guests gathered outside an Arcatype exposition in Amsterdam" /><span class="tag">Offline · exhibitions</span></div>
-        <div class="label">Events as acquisition + enrichment</div>
-        <h3 style="font-family: Oracle">Moments that build the community of tastemakers</h3>
-        <p>Curated brand experiences convert attention into trust and generate the community signals that make the database richer with every edition.</p>
-      </article>
-    </div>
-
-    <p class="pull reveal">
-      Online and offline <em>reinforce each other.</em> Offline builds community and trust with a highly focused audience.
-      Online delivers the intelligence brands pay for. Both are needed to make the system work.
-    </p>
-  </section>
-
-  <!-- TRACTION -->
-  <section class="section wrap" id="traction">
-    <header class="section-head reveal">
-      <div>
-        <div class="eyebrow"><span class="dot"></span> Traction &amp; validation</div>
-      </div>
-      <h2 class="display h2" style='max-width:22ch;font-family: "Monument Grotesk"'>Already in motion.</h2>
-    </header>
-
-    <div class="timeline reveal">
-      <div class="timeline-item is-done" style="font-family: Oracle">
-        <div class="when">Now · &gt;850 brands tracked</div>
-        <div class="what">Actively onboarding into the index</div>
-        <p>The first cohort of curated brands is live in the system.</p>
-      </div>
-      <div class="timeline-item is-done" style="font-family: Oracle">
-        <div class="when">9 April 2026 ✓ · Pilot event</div>
-        <div class="what">Proof of concept</div>
-        <p>People came for the design, stayed for the connections. First revenue in from partner fees and ticket sales.</p>
-      </div>
-      <div class="timeline-item" style="font-family: Oracle">
-        <div class="when">September 2026</div>
-        <div class="what">Flagship exposition + platform launch</div>
-        <p>First partners already signed. Platform MVP launches alongside the exposition.</p>
+      <div class="end human reveal">
+        <div class="end-tag"><span class="sq"></span>The other end · presence</div>
+        <h3>Real taste, real presence</h3>
+        <p>The same force creates the opposite. As convenience commoditizes, the other end — real
+        presence, real taste, things shaped by lived experience rather than suggested feeds —
+        becomes scarcer, and more valuable. People are craving real experience and connection.</p>
       </div>
     </div>
 
-    <p class="lede reveal" style="margin-top:40px">
-      First paying brands signed for September edition.
+    <p class="shift-close reveal">
+      Arcatype operates at both ends: <b>cultural presence that can't be automated, and
+      discoverability in a market increasingly mediated by AI.</b>
     </p>
-    <p class="lede reveal" style="margin-top:20px">
-      &gt;1,000 email subscribers. Rapidly growing Instagram audience — organic reach built before the platform is live.
+  </div>
+</section>
+
+<!-- ============ THE SOLUTION ============ -->
+<section class="section" id="solution">
+  <div class="wrap">
+    <div class="section-num reveal">02 — What we do</div>
+    <h2 class="section-title reveal">Making space for independent brands, <span class="italic">both online and offline.</span></h2>
+    <p class="section-lead reveal">
+      The scalable core is the platform: an AI-enhanced brand index and an intelligence layer
+      that turn cultural validation into discovery advantage. The offline side is how we build the
+      community and grow our network of tastemakers, the human signal that makes the platform credible.
     </p>
-    <p class="lede reveal" style="margin-top:20px">
-      First €20k subsidy is in and Corporate VC indicated interest in the follow-on seed round.
-    </p>
-  </section>
 
-  <!-- TEAM -->
-  <section class="section wrap" id="team">
-    <header class="section-head reveal">
-      <div>
-        <div class="eyebrow"><span class="dot"></span> The team</div>
-      </div>
-      <h2 class="display h2" style='max-width:22ch;font-family: "Monument Grotesk"'>Meet the founders.</h2>
-    </header>
-
-    <div class="team reveal">
-      <figure class="founders-photo">
-        <img src="assets/founders.jpg" alt="Bas Slootman and Alexandra Schott, co-founders of Arcatype, photographed in Amsterdam." />
-        <figcaption>Bas &amp; Alexandra · Amsterdam, April 2026</figcaption>
-      </figure>
-
-      <div class="founders-bios">
-        <div class="person">
-          <div>
-            <div class="name" style="font-family: Oracle">Alexandra Schott <a href="https://www.linkedin.com/in/alexandraschott/" target="_blank" rel="noopener" style="display:inline-flex;vertical-align:middle;margin-left:6px;opacity:.4;transition:opacity .2s;" onmouseover="this.style.opacity='.8'" onmouseout="this.style.opacity='.4'"><svg width="14" height="14" viewBox="0 0 24 24" fill="#141311" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a></div>
-            <div class="role">Co-founder — Marketing &amp; Creative Direction</div>
-            <p class="lead">Ex VP JamesEdition, Antler, Fundsup (exit). Track record building community and cultural relevance at scale across luxury, technology, and media.</p>
-            <p style="font-weight:400">Alexandra has spent the past decade advising companies across innovation, luxury, and media. Originally from Boston, and now living in Amsterdam you can often find her collecting rare print publications, strolling a new design gallery, or brewing a pot of some obscure herbal tea.</p>
-            <p style="font-weight:400">Her deep curiosity drives her research &amp; writing practise to explore the future of consumer industries, the realities behind responsible brand building, and how technology's shifts are redefining creative leadership.</p>
-            <p style="font-weight:400">Alexandra's perspective is shaped by her work across B2B2C SaaS marketplace infrastructure, experiential productions, and luxury consumer sectors, with a particular focus on how modern brands can embed authentic community and regenerative principles within their organisations.</p>
-          </div>
+    <div class="solution-grid">
+      <article class="sol-card reveal">
+        <img class="sol-img" src="assets/offline-card.jpg" alt="Guests gathered at an Arcatype exhibition in Amsterdam" />
+        <div class="sol-body">
+          <span class="sol-kicker">Offline · exhibitions</span>
+          <h3>Real experiences</h3>
+          <p>Curated exhibitions and experiences are how we build the community. Attracting tastemakers,
+          earning trust, and making what Arcatype does tangible. This is the human end, and the
+          source of our moat.</p>
+          <span class="sol-end human">The human end</span>
         </div>
-        <div class="person">
-          <div>
-            <div class="name" style="font-family: Oracle">Bas Slootman <a href="https://www.linkedin.com/in/basslootman/" target="_blank" rel="noopener" style="display:inline-flex;vertical-align:middle;margin-left:6px;opacity:.4;transition:opacity .2s;" onmouseover="this.style.opacity='.8'" onmouseout="this.style.opacity='.4'"><svg width="14" height="14" viewBox="0 0 24 24" fill="#141311" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a></div>
-            <div class="role">Co-founder — Partnerships &amp; Business Development</div>
-            <p class="lead">Co-founder of The Fabric Connector. Former Partnership Lead at CISE Network; co-hosted two cohorts of the Amsterdam Circular Startup Accelerator.</p>
-            <p style="font-weight:400">Bas has spent years at the intersection of business and social impact, believing that the brands worth building are also the ones worth finding.</p>
-            <p style="font-weight:400">Based in Amsterdam, his perspective is shaped less by algorithms and more by lived experience. Five years ago he stepped away from Instagram entirely, choosing instead to let philosophy books and real cultural encounters do the informing. It's a quieter signal, but a clearer one.</p>
-            <p style="font-weight:400">When he's not working, you'll find Bas at the calisthenics park or deep in a conversation about time, attention, and what we choose to do with both.</p>
-          </div>
+      </article>
+
+      <article class="sol-card reveal">
+        <img class="sol-img" src="assets/index-card.jpg" alt="Curated design objects in an Amsterdam showroom" />
+        <div class="sol-body">
+          <span class="sol-kicker">Index · taste filter</span>
+          <h3>Online brand index</h3>
+          <p>An AI-enhanced, human-curated database. Brands are scored on craft, character, and care
+          based on real data. The result is a standard the scene can reference and use to discover
+          where they spend.</p>
+          <span class="sol-end ai">The AI end</span>
+        </div>
+      </article>
+
+      <article class="sol-card reveal">
+        <img class="sol-img" src="assets/intelligence-card.jpg" alt="A garment reflected through fragmented mirrors" />
+        <div class="sol-body">
+          <span class="sol-kicker">Intelligence · outputs</span>
+          <h3>Insights only we can produce</h3>
+          <p>Which signals move the right audience, who's being culturally validated, where white space
+          is opening, and AI-search readiness. Cultural insights translated into discovery advantage.</p>
+          <span class="sol-end ai">The AI end</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRACTION ============ -->
+<section class="section" id="traction">
+  <div class="wrap">
+    <div class="section-num reveal">03 — Traction</div>
+    <h2 class="section-title reveal">Already <span class="italic">in motion.</span></h2>
+
+    <div class="timeline">
+      <div class="t-item reveal">
+        <div class="t-when">Now</div>
+        <div class="t-what">
+          <h4>1,000+ brands curated</h4>
+          <p>The first cohort of curated brands is live in the system, actively onboarding into the index.</p>
+        </div>
+      </div>
+      <div class="t-item reveal">
+        <div class="t-when"><span class="check">✓</span> 9 April 2026</div>
+        <div class="t-what">
+          <h4>Pilot exhibition — proof of concept</h4>
+          <p>People came for the design, stayed for the connections. First revenue in from partner fees and ticket sales.</p>
+        </div>
+      </div>
+      <div class="t-item reveal">
+        <div class="t-when">Sept 2026</div>
+        <div class="t-what">
+          <h4>Flagship exhibition + platform launch</h4>
+          <p>First paying brands already signed. Platform MVP launches alongside the exhibition. 1,000+ email subscribers and a fast-growing organic audience built before the platform is even live. First €20K subsidy is in.</p>
         </div>
       </div>
     </div>
+  </div>
+</section>
 
-    <p class="team-note reveal">
-      Currently in conversations with two potential technical co-founders and a creative director to complete the founding team.
-    </p>
-  </section>
+<!-- ============ TEAM ============ -->
+<section class="section" id="team">
+  <div class="wrap">
+    <div class="section-num reveal">04 — The team</div>
+    <h2 class="section-title reveal">Meet the <span class="italic">founders.</span></h2>
 
-  <!-- BUSINESS MODEL -->
-  <section class="section wrap" id="model" style="font-family: Oracle">
-    <header class="section-head reveal" style='font-family: "Monument Grotesk"'>
-      <div>
-        <div class="eyebrow"><span class="dot"></span> Business model</div>
+    <div class="team-grid">
+      <div class="member reveal">
+        <div class="member-name">Alexandra Schott</div>
+        <div class="member-role">Co-founder — Marketing &amp; Creative Direction</div>
+        <a class="member-li" href="https://www.linkedin.com/in/alexandraschott/" target="_blank" rel="noopener">LinkedIn →</a>
+        <p class="member-lead">Ex VP JamesEdition, Antler, Fundsup (exit). Track record building community and cultural relevance at scale across luxury, technology, and media.</p>
+        <p class="member-bio">Alexandra has spent the past decade advising companies across innovation, luxury, and media. Originally from Boston, and now living in Amsterdam you can often find her collecting rare print publications, strolling a new design gallery, or brewing a pot of some obscure herbal tea.</p>
+        <p class="member-bio">Her deep curiosity drives her research &amp; writing practise to explore the future of consumer industries, the realities behind responsible brand building, and how technology's shifts are redefining creative leadership.</p>
+        <p class="member-bio">Alexandra's perspective is shaped by her work across B2B2C SaaS marketplace infrastructure, experiential productions, and luxury consumer sectors, with a particular focus on how modern brands can embed authentic community and regenerative principles within their organisations.</p>
       </div>
-      <h2 class="display h2" style="max-width:20ch">Three tiers. One flywheel.</h2>
-    </header>
+      <div class="member reveal">
+        <div class="member-name">Bas Slootman</div>
+        <div class="member-role">Co-founder — Partnerships &amp; Business Development</div>
+        <a class="member-li" href="https://www.linkedin.com/in/basslootman/" target="_blank" rel="noopener">LinkedIn →</a>
+        <p class="member-lead">Co-founder of The Fabric Connector. Former Partnership Lead at CISE Network; co-hosted two cohorts of the Amsterdam Circular Startup Accelerator.</p>
+        <p class="member-bio">Bas has spent years at the intersection of business and social impact, believing that the brands worth building are also the ones worth finding.</p>
+        <p class="member-bio">Based in Amsterdam, his perspective is shaped less by algorithms and more by lived experience. Five years ago he stepped away from Instagram entirely, choosing instead to let philosophy books and real cultural encounters do the informing. It's a quieter signal, but a clearer one.</p>
+        <p class="member-bio">When he's not working, you'll find Bas at the calisthenics park or deep in a conversation about time, attention, and what we choose to do with both.</p>
+      </div>
+    </div>
 
-    <div class="tiers reveal">
-      <article class="tier">
-        <div class="tier-name">Featured Partner</div>
-        <div class="tier-price">€600 <span class="unit">/ year</span></div>
-        <div class="tier-sub">The baseline brand membership.</div>
-        <ul class="tier-list">
-          <li class="tier-row">Visibility + performance data</li>
-          <li class="tier-row">Event eligibility</li>
-          <li class="tier-row">Curated presence in the index</li>
+    <img class="team-photo reveal" src="assets/founders.jpg" alt="Bas Slootman and Alexandra Schott, co-founders of Arcatype, in Amsterdam" />
+
+    <div class="team-open reveal">
+      We have a CTO building platform v1, whom we're discussing a long-term collaboration with. Plus two
+      more team members: one on design, and one on editorial and the tastemaker network.
+    </div>
+  </div>
+</section>
+
+<!-- ============ BUSINESS MODEL ============ -->
+<section class="section" id="model">
+  <div class="wrap">
+    <div class="section-num reveal">05 — Business model</div>
+    <h2 class="section-title reveal">Brands pay to be <span class="italic">discovered.</span></h2>
+
+    <div class="tiers">
+      <div class="tier feature reveal">
+        <span class="tier-name">Featured Partner</span>
+        <div class="tier-price">€600<span style="font-size:0.4em;color:var(--muted)"> / year</span></div>
+        <p class="tier-sub">The baseline brand membership.</p>
+        <ul>
+          <li>Visibility + performance data</li>
+          <li>Product pages</li>
+          <li>Curated presence in the index</li>
         </ul>
-      </article>
+      </div>
 
-      <article class="tier">
-        <div class="tier-name">Experiences</div>
-        <div class="tier-price">€1.5–10K <span class="unit">/ slot</span></div>
-        <div class="tier-sub">Per-event partnerships.</div>
-        <ul class="tier-list">
-          <li class="tier-row">Event role + content bundle</li>
-          <li class="tier-row">Lead capture</li>
-          <li class="tier-row">Post-event reporting</li>
+      <div class="tier reveal">
+        <span class="tier-name">Experiences</span>
+        <div class="tier-price">€1.5–10K<span style="font-size:0.4em;color:var(--muted)"> / slot</span></div>
+        <p class="tier-sub">Per-exhibition partnerships.</p>
+        <ul>
+          <li>Exhibition role + content bundle</li>
+          <li>Lead capture</li>
+          <li>Post-exhibition reporting</li>
         </ul>
-      </article>
+      </div>
 
-      <article class="tier is-featured">
-        <div class="tier-name">Intelligence</div>
-        <div class="tier-price">€9,600 <span class="unit">/ yr · €800/mo</span></div>
-        <div class="tier-sub">The recurring revenue engine.</div>
-        <ul class="tier-list">
-          <li class="tier-row">Competitive benchmarks</li>
-          <li class="tier-row">Trend signals</li>
-          <li class="tier-row">Category intelligence</li>
+      <div class="tier reveal">
+        <span class="tier-name">Intelligence</span>
+        <div class="tier-price">€3,500<span style="font-size:0.4em;color:var(--muted)"> / year</span></div>
+        <p class="tier-sub">The recurring revenue engine.</p>
+        <ul>
+          <li>Competitive benchmarks</li>
+          <li>Cultural validation signals</li>
+          <li>AI-search readiness</li>
         </ul>
-      </article>
+      </div>
     </div>
 
-    <p class="pull reveal">
-      A free <em>Listed</em> tier gives all curated brands a presence in the index.
-      The Intelligence tier converts discoverability into a recurring subscription.
+    <p class="model-note reveal">
+      A free Listed tier gives every curated brand a presence in the index. The Intelligence tier
+      converts discoverability into recurring revenue.
     </p>
-  </section>
+  </div>
+</section>
 
-  <!-- WHY NOW -->
-  <section class="section wrap" id="why-now">
-    <header class="section-head reveal">
-      <div>
-        <div class="eyebrow"><span class="dot"></span> Why now</div>
-      </div>
-      <h2 class="display h2" style='max-width:20ch;font-family: "Monument Grotesk"'>Three shifts, converging.</h2>
-    </header>
+<!-- ============ MOAT ============ -->
+<section class="section" id="moat">
+  <div class="wrap">
+    <div class="section-num reveal">06 — The moat</div>
+    <h2 class="section-title reveal">Hard to copy. <span class="italic">Compounds over time.</span></h2>
 
-    <div class="why-list reveal">
-      <div class="why-row" style='font-family: "Monument Grotesk"'>
-        <div class="tag mono">Consumer shift</div>
-        <div class="title">Taste over algorithm</div>
-        <p class="body">82% of consumers rate values alignment as a top purchase driver. Trust has shifted to curated, human recommendation. Resale is becoming a discovery engine — shoppers see what holds value, then return to buy new.</p>
+    <div class="moat-grid">
+      <div class="moat reveal">
+        <span class="moat-kicker">Network moat</span>
+        <h3>Tastemaker network</h3>
+        <p>Hardest to copy. Built in real rooms, over time, person by person.</p>
       </div>
-      <div class="why-row" style='font-family: "Monument Grotesk"'>
-        <div class="tag mono">Regulatory tailwind</div>
-        <div class="title">EU DPP mandatory by 2027</div>
-        <p class="body">Arcatype is already collecting DPP-specification data. The regulation creates urgency and a captive compliance market — without us having to manufacture the need.</p>
+      <div class="moat reveal">
+        <span class="moat-kicker">Data moat</span>
+        <h3>Human-curated brand database</h3>
+        <p>Compounds with every brand added. AI-enhanced, but human-anchored.</p>
       </div>
-      <div class="why-row" style='font-family: "Monument Grotesk"'>
-        <div class="tag mono">Cultural shift</div>
-        <div class="title">Quality is the new status signal</div>
-        <p class="body">Value for money matters more than ever, and people are getting sharper about what's worth it. Luxury and status are shifting from price tags to real experiences and craftsmanship you can nerd out about.</p>
+      <div class="moat reveal">
+        <span class="moat-kicker">Flywheel moat</span>
+        <h3>Cross-brand affinity signals</h3>
+        <p>What the network gravitates toward. Starts at zero for any new entrant.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- MOAT -->
-  <section class="section wrap" id="moat">
-    <header class="section-head reveal">
-      <div>
-        <div class="eyebrow"><span class="dot"></span> The moat</div>
-      </div>
-      <h2 class="display h2" style='max-width:20ch;font-family: "Monument Grotesk"'>Hard to copy. Compounds over&nbsp;time.</h2>
-    </header>
+<!-- ============ HOW WE WIN ============ -->
+<section class="section" id="playbook">
+  <div class="wrap">
+    <div class="section-num reveal">07 — How we win</div>
+    <h2 class="section-title reveal">The playbook <span class="italic">already exists.</span></h2>
 
-    <div class="moat reveal">
-      <div class="chip" style="font-family: Oracle">
-        <div class="kind">Network moat</div>
-        <div class="title">Tastemaker network</div>
-        <div class="hard">Hardest to copy</div>
+    <div class="plays">
+      <div class="play reveal">
+        <div><div class="play-name">ShopMy</div><div class="play-meta">$1.5B · Oct 2025</div></div>
+        <div class="play-thesis">"Curation and taste scale commercially."</div>
+        <div class="play-body">Expanding into wellness, home, and food. We take the thesis further: intelligence, not just commerce.</div>
       </div>
-      <div class="chip" style="font-family: Oracle">
-        <div class="kind">Data moat</div>
-        <div class="title">Human-curated brand database</div>
-        <div class="hard">Compounds with every brand added</div>
+      <div class="play reveal">
+        <div><div class="play-name">Cosmos.so</div><div class="play-meta">$15M Series A</div></div>
+        <div class="play-thesis">"The anti-Pinterest: human-curated by high-level creatives to keep out noise."</div>
+        <div class="play-body">Building a taste-profile of visitors at a level where ads feel like honest recommendations, earned through strict curation.</div>
       </div>
-      <div class="chip" style="font-family: Oracle">
-        <div class="kind">Flywheel moat</div>
-        <div class="title">Cross-brand affinity signal data</div>
-        <div class="hard">Starts at zero for any new entrant</div>
+      <div class="play reveal">
+        <div><div class="play-name">Discogs</div><div class="play-meta">19M+ releases · est. 2000</div></div>
+        <div class="play-thesis">"A dataset so trusted the industry had to reference it."</div>
+        <div class="play-body">The marketplace wasn't planned — it emerged. We take the ambition: build the standard, the business follows.</div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- PLAYBOOK -->
-  <section class="section wrap" id="playbook">
-    <header class="section-head reveal">
-      <div>
-        <div class="eyebrow"><span class="dot"></span> How we win</div>
-      </div>
-      <h2 class="display h2" style='max-width:22ch;font-family: "Monument Grotesk"'>The playbook already&nbsp;exists.</h2>
-    </header>
-
-    <div class="plays reveal">
-      <article class="play">
-        <div class="meta">ShopMy · $1.5B · Oct 2025</div>
-        <div class="name" style="font-family: Oracle">Taste over advertising
-
-</div>
-        <p class="thesis">"Curation and taste scale commercially."</p>
-        <p>Expanding into wellness, home, and food. We take the thesis further: intelligence, not just commerce.</p>
-      </article>
-      <article class="play">
-        <div class="meta">Cosmos.so · $15M Series A</div>
-        <div class="name" style="font-family: Oracle">Depth beats scale
-
-</div>
-        <p class="thesis">"Built the anti-Pinterest: no ads, no likes, no noise."</p>
-        <p>#1 in the App Store across 22 countries. We go further: structured data, not just visual inspiration.</p>
-      </article>
-      <article class="play">
-        <div class="meta">Discogs · 19M+ releases · Est. 2000</div>
-        <div class="name" style="font-family: Oracle">Community builds the standard</div>
-        <p class="thesis">"A dataset so trusted the industry had to reference it."</p>
-        <p>The marketplace wasn't planned — it emerged. We take the ambition: build the standard, the business follows.</p>
-      </article>
+<!-- ============ FINANCIALS ============ -->
+<section class="section" id="financials">
+  <div class="wrap">
+    <div class="section-num reveal">08 — Financial milestones</div>
+    <h2 class="section-title reveal">Profitable in <span class="italic">year three.</span></h2>
+    <div class="stat-strip reveal" style="margin-top:48px">
+      <div class="stat"><div class="stat-val">€1.09M</div><div class="stat-label">3-year revenue projection</div></div>
+      <div class="stat"><div class="stat-val">€92K</div><div class="stat-label">Monthly revenue at scale</div></div>
+      <div class="stat"><div class="stat-val">4 : 1</div><div class="stat-label">LTV : CAC ratio</div></div>
+      <div class="stat"><div class="stat-val">889</div><div class="stat-label">Subscribers by M36 — 766 Featured · 123 Intelligence</div></div>
     </div>
-  </section>
-
-  <!-- COMPETITIVE -->
-  <section class="section wrap" id="competitive">
-    <header class="section-head reveal">
-      <div>
-        <div class="eyebrow"><span class="dot"></span> Competitive landscape</div>
-      </div>
-      <h2 class="display h2" style='max-width:22ch;font-family: "Monument Grotesk"'>Existing players serve <em>the wrong&nbsp;customer.</em></h2>
-    </header>
-
-    <div class="compare-wrap reveal">
-      <table class="compare">
-        <thead>
-          <tr>
-            <th>Platform</th>
-            <th>Annual price</th>
-            <th>Human curation</th>
-            <th>Sustainability</th>
-            <th>Tastemaker affinity</th>
-            <th>Independent brands</th>
-            <th>Multi-category</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td class="plat">WGSN</td><td>$15K–$25K</td><td class="check"><span class="n">—</span></td><td class="check"><span class="n">—</span></td><td class="check"><span class="n">—</span></td><td class="check"><span class="n">—</span></td><td class="check"><span class="y">✓</span></td></tr>
-          <tr><td class="plat">BoF Insights</td><td>$499–$999</td><td class="check"><span class="y">✓</span></td><td class="check"><span class="n">—</span></td><td class="check"><span class="n">—</span></td><td class="check"><span class="n">—</span></td><td class="check"><span class="n">—</span></td></tr>
-          <tr><td class="plat">Good On You</td><td>Free</td><td class="check"><span class="n">—</span></td><td class="check"><span class="y">✓</span></td><td class="check"><span class="n">—</span></td><td class="check"><span class="y">✓</span></td><td class="check"><span class="n">—</span></td></tr>
-          <tr><td class="plat">ShopMy</td><td>$399+/mo</td><td class="check"><span class="y">✓</span></td><td class="check"><span class="n">—</span></td><td class="check"><span class="y">✓</span></td><td class="check"><span class="y">✓</span></td><td class="check"><span class="n">—</span></td></tr>
-          <tr class="is-us"><td class="plat">Arcatype</td><td>€600–€9K</td><td class="check"><span class="y">✓</span></td><td class="check"><span class="y">✓</span></td><td class="check"><span class="y">✓</span></td><td class="check"><span class="y">✓</span></td><td class="check"><span class="y">✓</span></td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <p class="whitespace reveal">
-      <b>The white space —</b> no existing platform combines all five: human curation, sustainability scoring,
-      tastemaker affinity signals, independent brand focus, and multi-category coverage.
-      This combination is Arcatype's structural differentiation — and it cannot be replicated
-      by adding a feature to an existing product.
+    <p class="section-lead reveal" style="margin-top:32px">
+      Seed round of €300K follows at month 11 on demonstrated traction.
     </p>
-  </section>
+  </div>
+</section>
 
-  <!-- FINANCIAL MILESTONES -->
-  <section class="section wrap" id="financials">
-    <header class="section-head reveal">
-      <div>
-        <div class="eyebrow"><span class="dot"></span> Financial milestones</div>
-      </div>
-      <h2 class="display h2" style='max-width:20ch;font-family: "Monument Grotesk"'>Profitable in year three.</h2>
-    </header>
-
-    <div class="f-grid reveal">
-      <div class="f-stat"><div class="num">€1.09M</div><div class="lbl">3-year revenue projection</div></div>
-      <div class="f-stat"><div class="num">€92K</div><div class="lbl">Monthly revenue at scale</div></div>
-      <div class="f-stat"><div class="num">4 : 1</div><div class="lbl">LTV : CAC ratio</div></div>
-      <div class="f-stat"><div class="num">889</div><div class="lbl">Subscribers by M36<br/>766 Featured · 123 Intelligence</div></div>
-    </div>
-
-    <p class="lede reveal">
-      Seed round of €300K follows at month&nbsp;11 on demonstrated traction.
-    </p>
-  </section>
-
-  <!-- ASK (dark band) -->
-  <section class="ask" id="ask">
-    <div class="wrap section">
-      <header class="section-head reveal" style="border:0;padding:0;margin-bottom:24px">
-        <div>
-          <div class="eyebrow"><span class="dot"></span> The ask</div>
-        </div>
-        <h2 class="display h2" style='color:var(--cloud);max-width:22ch;font-family: "Monument Grotesk"'>Pre-seed round</h2>
-      </header>
-
-      <div class="amount reveal">€150,000</div>
-
-      <p class="ask-body reveal">
-        The Brand Index MVP launches in September — we're building it now. This raise takes Arcatype from database to
-        intelligence platform. The September exposition generates direct revenue from brand participation —
-        it funds itself while proving the model at scale. <b>Goal: validated traction and unit economics to raise a €300K seed in early 2027.</b>
+<!-- ============ THE ASK ============ -->
+<section class="section" style="border-top:0" id="ask">
+  <div class="wrap">
+    <div class="ask">
+      <div class="section-num reveal">09 — The ask</div>
+      <div class="ask-amount reveal"><span class="sm">Pre-seed round</span>€200,000</div>
+      <p class="ask-narr reveal">
+        This raise builds Arcatype across both ends of the barbell: the September flagship exhibition that
+        generates direct brand revenue and proves the model, and the platform that turns our curated
+        network into AI-driven discovery advantage for brands. <b>We're raising from angels and angel
+        networks who understand cultural businesses — building deliberately for durability, not for scale
+        at any cost.</b>
       </p>
 
-      <div class="hero-cta reveal" style="margin-bottom:16px">
-        <a class="btn" href="mailto:bas@arcatype.co?subject=Arcatype%20%E2%80%94%20Pre-seed">Book a call <span class="arrow">→</span></a>
-      </div>
-
-      <div class="ask-grid reveal">
-        <div>
-          <div class="list-head">Use of funds</div>
+      <div class="ask-cols">
+        <div class="ask-col reveal">
+          <h4>Use of funds</h4>
           <ul>
             <li>Growth strategies — September Exhibition, Editorial Content, Partnerships</li>
             <li>From Brand Index MVP to Intelligence Platform — technical build</li>
@@ -553,262 +1124,91 @@
             <li>Founder runway to April 2027</li>
           </ul>
         </div>
-        <div>
-          <div class="list-head">Milestones unlocked</div>
+        <div class="ask-col reveal">
+          <h4>Milestones unlocked</h4>
           <ul>
-            <li>Intelligence platform live</li>
+            <li>Platform &amp; intelligence layer live</li>
             <li>50 Featured Partners onboarded</li>
-            <li>3 paid experiences completed</li>
-            <li>Exposition revenue-positive</li>
-            <li>Runway through April 2027</li>
+            <li>Flagship exhibition revenue-positive</li>
+            <li>Validated unit economics</li>
+            <li>Runway into 2027</li>
           </ul>
         </div>
       </div>
+
+      <a class="ask-cta" href="mailto:bas@arcatype.co?subject=Arcatype%20%E2%80%94%20Pre-seed">Book a call →</a>
     </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="foot wrap" id="contact">
-    <div class="foot-top">
-      <div>
-        <img class="foot-logo" src="assets/arcatype-logo.svg" alt="Arcatype" />
-        <p style="font-family:var(--f-editor);font-size:16px;color:var(--ink-2);max-width:36ch;line-height:1.55">
-          Curated discovery and intelligence for brands that deserve to be found.
-        </p>
-      </div>
-
-      <div>
-        <h4>Contact</h4>
-        <a href="mailto:alexandra@arcatype.co" style="padding:14px 0">Alexandra Schott · alexandra@arcatype.co</a>
-        <a href="mailto:bas@arcatype.co" style="padding:14px 0">Bas Slootman · bas@arcatype.co</a>
-        <a href="https://arcatype.co" target="_blank" rel="noopener" style="padding:14px 0">arcatype.co</a>
-        <a href="https://www.instagram.com/arcatype.co/" target="_blank" rel="noopener" style="padding:14px 0">@arcatype.co</a>
-      </div>
-    </div>
-
-    <div class="foot-bottom">
-      <span>© 2026 Arcatype · Amsterdam</span>
-      <span>Confidential · Investor one-pager v2026.04</span>
-    </div>
-  </footer>
-
-</main>
-
-<!-- TWEAKS PANEL (hidden until host activates) -->
-<aside id="tweaksPanel" aria-label="Tweaks">
-  <div class="tw-head">
-    <span class="tw-title">Tweaks</span>
-    <button class="tw-close" id="twClose" aria-label="Close tweaks">✕</button>
   </div>
-  <div class="tw-body">
-    <div class="tw-row">
-      <div class="tw-label"><span>Body line height</span><span class="val" id="vBody">1.55</span></div>
-      <input type="range" id="twBody" min="1.3" max="2.2" step="0.02" />
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-line serif">Human taste, enhanced with AI.</div>
+    <div class="footer-meta">
+      <a href="mailto:alexandra@arcatype.co">Alexandra Schott · alexandra@arcatype.co</a>
+      <a href="mailto:bas@arcatype.co">Bas Slootman · bas@arcatype.co</a>
+      <span class="footer-spacer"></span>
+      <a href="https://arcatype.co" target="_blank" rel="noopener">arcatype.co</a>
+      <a href="https://www.instagram.com/arcatype.co/" target="_blank" rel="noopener">@arcatype.co</a>
+      <span>© 2026 Arcatype · Amsterdam · Confidential</span>
     </div>
-    <div class="tw-row">
-      <div class="tw-label"><span>Display line height</span><span class="val" id="vDisplay">1.02</span></div>
-      <input type="range" id="twDisplay" min="0.9" max="1.4" step="0.02" />
-    </div>
-    <div class="tw-row">
-      <div class="tw-label"><span>Heading line height</span><span class="val" id="vH2">1.04</span></div>
-      <input type="range" id="twH2" min="0.9" max="1.5" step="0.02" />
-    </div>
-    <div class="tw-row">
-      <div class="tw-label"><span>Section spacing</span><span class="val" id="vSection">1.00×</span></div>
-      <input type="range" id="twSection" min="0.6" max="2" step="0.05" />
-    </div>
-    <div class="tw-row">
-      <div class="tw-label"><span>Row spacing (Why now)</span><span class="val" id="vRow">1.00×</span></div>
-      <input type="range" id="twRow" min="0.6" max="2.4" step="0.05" />
-    </div>
-    <div class="tw-row">
-      <div class="tw-label"><span>Paragraph breathing room</span><span class="val" id="vPara">0 px</span></div>
-      <input type="range" id="twPara" min="0" max="48" step="1" />
-    </div>
-    <button class="tw-reset" id="twReset">Reset to defaults</button>
   </div>
-</aside>
+</footer>
 
 <script>
-// -------- Always start at top --------
 history.scrollRestoration = 'manual';
 window.scrollTo(0, 0);
 
-// -------- Access gate (persisted) --------
+/* gate */
 (function () {
-  var gate = document.getElementById('gate');
-  var form = document.getElementById('gateForm');
-  var input = document.getElementById('gateInput');
-  var hint = document.getElementById('gateHint');
   var CODE = 'herenmarkt2026';
   var KEY  = 'arcatype.gate.ok';
+  var gate  = document.getElementById('gate');
+  var input = document.getElementById('gate-input');
+  var btn   = document.getElementById('gate-btn');
+  var err   = document.getElementById('gate-err');
 
-  try {
-    if (localStorage.getItem(KEY) === '1') {
-      gate.classList.add('is-hidden');
-      document.documentElement.style.overflow = '';
-      window.scrollTo(0, 0);
+  function unlock() {
+    gate.classList.add('hidden');
+    document.body.style.overflow = '';
+    window.scrollTo(0, 0);
+    localStorage.setItem(KEY, '1');
+  }
+
+  if (localStorage.getItem(KEY) === '1') { unlock(); return; }
+
+  document.body.style.overflow = 'hidden';
+  input.focus();
+
+  function tryEnter() {
+    if (input.value.trim() === CODE) {
+      unlock();
     } else {
-      document.documentElement.style.overflow = 'hidden';
-      setTimeout(function(){ try { input.focus(); } catch(e){} }, 300);
+      err.textContent = 'Incorrect code.';
+      input.value = '';
     }
-  } catch(e){}
-
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    var v = (input.value || '').trim().toLowerCase();
-    if (v === CODE || v === 'investor' || v === 'arcatype') {
-      try { localStorage.setItem(KEY, '1'); } catch(e){}
-      gate.classList.add('is-hidden');
-      document.documentElement.style.overflow = '';
-      window.scrollTo(0, 0);
-      hint.classList.remove('is-err');
-      hint.innerHTML = 'Welcome.';
-    } else {
-      hint.classList.add('is-err');
-      hint.textContent = 'Incorrect. Please try again.';
-      input.select();
-    }
-  });
-})();
-
-// -------- Nav scroll state --------
-(function () {
-  var nav = document.getElementById('nav');
-  function onScroll() {
-    if (window.scrollY > 8) nav.classList.add('is-scrolled');
-    else nav.classList.remove('is-scrolled');
   }
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
+  btn.addEventListener('click', tryEnter);
+  input.addEventListener('keydown', function (e) { if (e.key === 'Enter') tryEnter(); });
 })();
 
-// -------- Reveal on scroll --------
-(function () {
-  var els = document.querySelectorAll('.reveal');
-  if (!('IntersectionObserver' in window)) {
-    els.forEach(function(el){ el.classList.add('is-in'); });
-    return;
-  }
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (en) {
-      if (en.isIntersecting) {
-        en.target.classList.add('is-in');
-        io.unobserve(en.target);
-      }
-    });
-  }, { rootMargin: '0px 0px -10% 0px', threshold: 0.05 });
-  els.forEach(function(el){ io.observe(el); });
-})();
+/* nav shadow */
+var nav = document.getElementById('nav');
+window.addEventListener('scroll', function () {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+});
 
-// -------- Newsletter signup (client-side) --------
-(function () {
-  var form = document.getElementById('signupForm');
-  var input = document.getElementById('signupEmail');
-  var msg  = document.getElementById('signupMsg');
-  if (!form || !input || !msg) return;
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    var v = (input.value || '').trim();
-    var ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
-    if (!ok) {
-      msg.textContent = 'Enter a valid email';
-      msg.className = 'signup-msg is-err';
-      return;
-    }
-    msg.textContent = 'Subscribed · we\u2019ll be in touch';
-    msg.className = 'signup-msg is-ok';
-    input.value = '';
+/* reveal on scroll */
+var io = new IntersectionObserver(function (entries) {
+  entries.forEach(function (e) {
+    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
   });
-})();
-
-// -------- Tweaks panel (spacing controls) --------
-(function () {
-  var TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
-    "bodyLine": 1.55,
-    "displayLine": 1.02,
-    "h2Line": 1.04,
-    "sectionGap": 1,
-    "rowGap": 1,
-    "paraSpace": 0
-  }/*EDITMODE-END*/;
-
-  var panel = document.getElementById('tweaksPanel');
-  var root  = document.documentElement;
-  var state = Object.assign({}, TWEAK_DEFAULTS);
-
-  var inputs = {
-    bodyLine:    { el: document.getElementById('twBody'),    out: document.getElementById('vBody'),    fmt: function(v){return Number(v).toFixed(2);}, cssVar: '--tw-body-line' },
-    displayLine: { el: document.getElementById('twDisplay'), out: document.getElementById('vDisplay'), fmt: function(v){return Number(v).toFixed(2);}, cssVar: '--tw-display-line' },
-    h2Line:      { el: document.getElementById('twH2'),      out: document.getElementById('vH2'),      fmt: function(v){return Number(v).toFixed(2);}, cssVar: '--tw-h2-line' },
-    sectionGap:  { el: document.getElementById('twSection'), out: document.getElementById('vSection'), fmt: function(v){return Number(v).toFixed(2)+'×';}, cssVar: '--tw-section-gap' },
-    rowGap:      { el: document.getElementById('twRow'),     out: document.getElementById('vRow'),     fmt: function(v){return Number(v).toFixed(2)+'×';}, cssVar: '--tw-row-gap' },
-    paraSpace:   { el: document.getElementById('twPara'),    out: document.getElementById('vPara'),    fmt: function(v){return Math.round(v)+' px';},  cssVar: '--tw-para-space' },
-  };
-
-  // Link h2 slider to h3 proportionally too
-  function apply() {
-    Object.keys(inputs).forEach(function (k) {
-      var i = inputs[k];
-      var v = state[k];
-      i.el.value = v;
-      i.out.textContent = i.fmt(v);
-      root.style.setProperty(i.cssVar, v);
-    });
-    // Keep h3 tracking h2 with a small offset for visual harmony
-    var h3 = Math.max(1.0, Number(state.h2Line) + 0.06);
-    root.style.setProperty('--tw-h3-line', h3);
-  }
-
-  function persist() {
-    try {
-      window.parent.postMessage({ type: '__edit_mode_set_keys', edits: state }, '*');
-    } catch (e) {}
-  }
-
-  Object.keys(inputs).forEach(function (k) {
-    var i = inputs[k];
-    i.el.addEventListener('input', function () {
-      state[k] = parseFloat(i.el.value);
-      apply();
-    });
-    i.el.addEventListener('change', persist);
-  });
-
-  document.getElementById('twReset').addEventListener('click', function () {
-    state = Object.assign({}, TWEAK_DEFAULTS);
-    apply();
-    persist();
-  });
-  document.getElementById('twClose').addEventListener('click', function () {
-    panel.classList.remove('is-open');
-  });
-
-  // Register listener BEFORE announcing availability
-  window.addEventListener('message', function (ev) {
-    var d = ev.data || {};
-    if (d.type === '__activate_edit_mode') panel.classList.add('is-open');
-    else if (d.type === '__deactivate_edit_mode') panel.classList.remove('is-open');
-  });
-
-  apply();
-  try { window.parent.postMessage({ type: '__edit_mode_available' }, '*'); } catch (e) {}
-})();
-
-// -------- Smooth in-page anchors --------
-(function () {
-  document.querySelectorAll('a[href^="#"]').forEach(function (a) {
-    a.addEventListener('click', function (e) {
-      var id = a.getAttribute('href');
-      if (id.length < 2) return;
-      var el = document.querySelector(id);
-      if (!el) return;
-      e.preventDefault();
-      window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 40, behavior: 'smooth' });
-    });
-  });
-})();
+}, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+document.querySelectorAll('.reveal').forEach(function (el, i) {
+  el.style.transitionDelay = (Math.min(i % 4, 3) * 70) + 'ms';
+  io.observe(el);
+});
 </script>
-
 </body>
 </html>
